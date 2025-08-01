@@ -10,6 +10,7 @@ import Features from './components/Features';
 import FAQ from './components/FAQ';
 import Services from './components/Services';
 import Footer from './components/Footer';
+import Testimonials from './components/Testimonials';
 
 export default function Home() {
   return (
@@ -27,10 +28,13 @@ export default function Home() {
       <Metrics />
       <Steps />
       <Pricing />
+      <Testimonials />
       <Features />
       <FAQ />
       <Services />
       <Footer />
+
+
     </div>
   );
 }
