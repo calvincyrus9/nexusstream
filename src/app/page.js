@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Overview from './components/Overview';
-import Brands from '../components/Brands';
+import Brands from './components/Brands';
 import Metrics from './components/Metrics';
 import Steps from './components/Steps';
 import Pricing from './components/Pricing';
