@@ -1,4 +1,6 @@
 // src/components/Testimonials.js
+"use client";
+
 import React, { useState } from 'react';
 
 const Testimonials = () => {
@@ -124,5 +126,6 @@ const Testimonials = () => {
     </section>
   );
 };
+
 
 export default Testimonials;
