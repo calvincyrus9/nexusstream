@@ -64,10 +64,10 @@ const Pricing = () => {
             </button>
           </div>
         </div>
-      </div>
     </section>
   );
 };
 
 
 export default Pricing;
+
