@@ -43,10 +43,10 @@ const Pricing = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          <PricingCard duration="1 Month" price={16.99} popular={false} />
-          <PricingCard duration="3 Months" price={45.99} popular={true} />
-          <PricingCard duration="6 Months" price={79.99} popular={false} />
-          <PricingCard duration="1 Year" price={109.99} popular={false} />
+          <PricingCard duration="1 Month" price={13.99} popular={false} />
+          <PricingCard duration="3 Months" price={35.99} popular={false} />
+          <PricingCard duration="6 Months" price={59.99} popular={true} />
+          <PricingCard duration="1 Year" price={79.99} popular={false} />
         </div>
         
         <div className="mt-12 text-center">
