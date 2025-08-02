@@ -53,8 +53,21 @@ const Pricing = () => {
           <p className="text-gray-400">Secure checkout with PayPal, Credit Cards, and Bitcoin (10% discount for crypto payments)</p>
         </div>
       </div>
+    <div className="mt-16 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-500/20 rounded-xl p-8">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div>
+              <h3 className="text-2xl font-bold text-white">Ready to Transform Your Trading?</h3>
+              <p className="mt-2 text-gray-300">Join thousands of traders who are already profiting from our signals.</p>
+            </div>
+            <button className="mt-6 md:mt-0 px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium shadow-lg shadow-cyan-500/20 transition-all duration-300">
+              Start Your Free Trial Now
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
+
 
 export default Pricing;
