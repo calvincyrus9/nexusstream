@@ -13,13 +13,13 @@ const DeviceCompatibility = () => {
 const devices = [
   { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' },
   { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png' },
-  { name: 'Xbox', logo: '/logos/xbox.svg' },
-  { name: 'Windows', logo: '/logos/windows.svg' },
+  { name: 'Xbox', description: 'All model', logo: '/logos/xbox.svg' },
+  { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' },
   { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
   { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
   { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
   { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' },
-  { name: 'Nvidia', logo: '/logos/nvidia.svg' },
+  { name: 'Nvidia', description: 'All model', logo: '/logos/nvidia.svg' },
   { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' },
 ];
 
@@ -111,6 +111,7 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
+
 
 
 
