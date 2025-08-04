@@ -90,13 +90,7 @@ const devices = [
 // Device Card Component
 const DeviceCard = ({ device }) => {
   return (
-<div className={`w-16 h-16 rounded-lg ${device.bgColor} flex items-center justify-center mb-4`}>
-  <img
-    src={device.logo}
-    alt={`${device.name} logo`}
-    className="w-10 h-10 object-contain"
-  />
-</div>
+    <div className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-gray-800/30 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/20 h-52">
       {/* Device Icon - Replace with actual icons */}
       <div className="w-16 h-16 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center mb-4">
         <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10" />
@@ -113,6 +107,7 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
+
 
 
 
