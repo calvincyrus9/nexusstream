@@ -8,7 +8,7 @@ import Steps from './components/Steps';
 import Pricing from './components/Pricing';
 import Features from './components/Features';
 import FAQ from './components/FAQ';
-import Services from './components/Services';
+import ServerNetwork from './components/ServerNetwork';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 
@@ -31,7 +31,7 @@ export default function Home() {
       <Testimonials />
       <Features />
       <FAQ />
-      <Services />
+      <ServerNetwork />
       <Footer />
 
 
