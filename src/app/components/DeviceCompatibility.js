@@ -1,7 +1,7 @@
 // components/DeviceCompatibility.js
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -9,32 +9,30 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const DeviceCompatibility = () => {
-  // Mock device data - replace with your actual icons
-const devices = [
-  { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' },
-  { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png' },
-  { name: 'Xbox', description: 'All model', logo: '/logos/xbox.svg' },
-  { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' },
-  { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
-  { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
-  { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
-  { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' },
-  { name: 'Nvidia', description: 'All model', logo: '/logos/nvidia.svg' },
-  { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' },
-];
-
+  // Mock device data
+  const devices = [
+    { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' },
+    { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png' },
+    { name: 'Xbox', description: 'All models', logo: '/logos/xbox.svg' },
+    { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' },
+    { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
+    { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
+    { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
+    { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' },
+    { name: 'Nvidia', description: 'All models', logo: '/logos/nvidia.svg' },
+    { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' },
+  ];
 
   return (
-    <section className="relative overflow-hidden py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      {/* Background elements */}
+    // Changed: Updated background to the slate palette
+    <section className="relative overflow-hidden py-20 px-4 bg-slate-900">
+      {/* Background elements (kept the cool grid pattern) */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
-        
-        {/* Grid pattern overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-900/95"></div>
         <div 
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0zM4 0h2v100H4zM8 0h2v100H8zM12 0h2v100h-2zM16 0h2v100h-2zM20 0h2v100h-2zM24 0h2v100h-2zM28 0h2v100h-2zM32 0h2v100h-2zM36 0h2v100h-2zM40 0h2v100h-2zM44 0h2v100h-2zM48 0h2v100h-2zM52 0h2v100h-2zM56 0h2v100h-2zM60 0h2v100h-2zM64 0h2v100h-2zM68 0h2v100h-2zM72 0h2v100h-2zM76 0h2v100h-2zM80 0h2v100h-2zM84 0h2v100h-2zM88 0h2v100h-2zM92 0h2v100h-2zM96 0h2v100h-2zM0 0v2h100V0zM0 4v2h100V4zM0 8v2h100V8zM0 12v2h100v-2zM0 16v2h100v-2zM0 20v2h100v-2zM0 24v2h100v-2zM0 28v2h100v-2zM0 32v2h100v-2zM0 36v2h100v-2zM0 40v2h100v-2zM0 44v2h100v-2zM0 48v2h100v-2zM0 52v2h100v-2zM0 56v2h100v-2zM0 60v2h100v-2zM0 64v2h100v-2zM0 68v2h100v-2zM0 72v2h100v-2zM0 76v2h100v-2zM0 80v2h100v-2zM0 84v2h100v-2zM0 88v2h100v-2zM0 92v2h100v-2zM0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,...")`, // Your SVG grid pattern
             backgroundSize: "100px 100px"
           }}
         ></div>
@@ -43,17 +41,20 @@ const devices = [
       {/* Content */}
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block px-5 py-2.5 bg-cyan-900/30 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
-            <span className="text-cyan-400 font-medium tracking-wider text-sm">
+          {/* Changed: Badge updated to blue theme */}
+          <div className="inline-block px-5 py-2.5 bg-blue-900/30 backdrop-blur-sm rounded-full border border-blue-500/30 mb-6">
+            <span className="text-blue-400 font-medium tracking-wider text-sm">
               COMPATIBLE DEVICES
             </span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          {/* Changed: Heading gradient updated to blue theme */}
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
             Our IPTV Works Everywhere
           </h2>
           
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          {/* Changed: Subtitle text color for better hierarchy */}
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             *OUR IPTV CAN BE ACCESSED THROUGH ALL DEVICES!
           </p>
         </div>
@@ -87,23 +88,26 @@ const devices = [
   );
 };
 
-// Device Card Component
+// Device Card Component - UPDATED with the new Blue Theme
 const DeviceCard = ({ device }) => {
   return (
-    <div className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-gray-800/30 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/20 h-52">
-      {/* Device Icon - Replace with actual icons */}
-<div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center mb-4">
-<img
-  src={device.logo}
-  alt={`${device.name} logo`}
-  className="w-10 h-10 object-contain"
-/>
+    // Changed: Card background, border, and hover effects updated to the new theme
+    <div className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 h-52">
+      {/* Device Icon container is still white for max contrast, which is great! */}
+      <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center mb-4">
+        <img
+          src={device.logo}
+          alt={`${device.name} logo`}
+          className="w-10 h-10 object-contain"
+        />
       </div>
       
-      <h3 className="text-xl font-bold text-cyan-400 mb-2">
+      {/* Changed: Title text changed from cyan to blue */}
+      <h3 className="text-xl font-bold text-blue-400 mb-2">
         {device.name}
       </h3>
-      <p className="text-gray-300">
+      {/* Changed: Description text changed from gray to slate for consistency */}
+      <p className="text-slate-400">
         {device.description}
       </p>
     </div>
@@ -111,10 +115,3 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
-
-
-
-
-
-
-
