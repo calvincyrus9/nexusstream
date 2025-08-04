@@ -86,7 +86,7 @@ const ServerNetwork = () => {
               alt="Global Server Network"
               layout="fill"
               objectFit="cover"
-              className="opacity-75"
+              className="opacity-90"
             />
             
             <div className="absolute inset-0">
@@ -198,3 +198,4 @@ const ServerItem = ({ server }) => {
 };
 
 export default ServerNetwork;
+
