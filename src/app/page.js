@@ -30,8 +30,8 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <Features />
+    <ServerNetwork />
       <FAQ />
-      <ServerNetwork />
       <Footer />
 
 
