@@ -10,18 +10,19 @@ import 'swiper/css/pagination';
 
 const DeviceCompatibility = () => {
   // Mock device data - replace with your actual icons
-  const devices = [
-    { name: 'Android', description: 'Phones & Tablets & TVs' },
-    { name: 'Apple', description: 'iPhone & iPad & TVs' },
-    { name: 'Xbox', description: 'Select a model' },
-    { name: 'Windows', description: 'Select a version' },
-    { name: 'Fire TV', description: 'Fire Stick' },
-    { name: 'LG', description: 'Smart TV & Phones' },
-    { name: 'Chromecast', description: 'Media center' },
-    { name: 'XBMC', description: 'Media center' },
-    { name: 'Nvidia', description: 'Select a model' },
-    { name: 'Samsung', description: 'Smart TV & Phones & Tablets' },
-  ];
+const devices = [
+  { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' },
+  { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png' },
+  { name: 'Xbox', description: 'Select a model', logo: '/logos/xbox.svg' },
+  { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' },
+  { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
+  { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
+  { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
+  { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' },
+  { name: 'Nvidia', description: 'Select a model', logo: '/logos/nvidia.svg' },
+  { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' },
+];
+
 
   return (
     <section className="relative overflow-hidden py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
