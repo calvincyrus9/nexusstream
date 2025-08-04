@@ -146,7 +146,34 @@ const ServerNetwork = () => {
         </div>
       </div>
       
-      <style jsx>{/* CSS remains the same */}</style>
+      <style jsx>{`
+        .mask-fade {
+          mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%
+          );
+        }
+        
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+          display: flex;
+          width: max-content;
+        }
+        
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        @media (max-width: 768px) {
+          .animate-scroll {
+            animation-duration: 25s;
+          }
+        }
+      `}</style>
     </section>
   );
 };
