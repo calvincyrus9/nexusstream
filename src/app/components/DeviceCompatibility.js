@@ -11,16 +11,16 @@ import 'swiper/css/pagination';
 const DeviceCompatibility = () => {
   // Mock device data - replace with your actual icons
 const devices = [
-  { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' bgColor: 'bg-gray-800'},
-  { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png'bgColor: 'bg-gray-800' },
-  { name: 'Xbox', description: 'Select a model', logo: '/logos/xbox.svg'bgColor: 'bg-gray-800' },
-  { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' bgColor: 'bg-gray-800'},
-  { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' bgColor: 'bg-gray-800'},
-  { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' bgColor: 'bg-gray-800'},
-  { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg'bgColor: 'bg-gray-800' },
-  { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' bgColor: 'bg-gray-800'},
-  { name: 'Nvidia', description: 'Select a model', logo: '/logos/nvidia.svg' bgColor: 'bg-gray-800'},
-  { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' bgColor: 'bg-gray-800'},
+  { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg'},
+  { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png'},
+  { name: 'Xbox', description: 'Select a model', logo: '/logos/xbox.svg' },
+  { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg'},
+  { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
+  { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
+  { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
+  { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png' },
+  { name: 'Nvidia', description: 'Select a model', logo: '/logos/nvidia.svg' '},
+  { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg' },
 ];
 
 
@@ -113,4 +113,5 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
+
 
