@@ -14,7 +14,7 @@ const DeviceCompatibility = () => {
     { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg' },
     { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png' },
     { name: 'Xbox', description: 'All models', logo: '/logos/xbox.svg' },
-    { name: 'Windows', description: 'Select a version', logo: '/logos/windows.svg' },
+    { name: 'Windows', description: 'All models', logo: '/logos/windows.svg' },
     { name: 'Fire TV', description: 'Fire Stick', logo: '/logos/firetv.png' },
     { name: 'LG', description: 'Smart TV & Phones', logo: '/logos/lg.svg' },
     { name: 'Chromecast', description: 'Media center', logo: '/logos/chromecast.svg' },
@@ -115,3 +115,4 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
+
