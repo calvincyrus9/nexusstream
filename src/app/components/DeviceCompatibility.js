@@ -50,12 +50,12 @@ const DeviceCompatibility = () => {
           
           {/* Changed: Heading gradient updated to blue theme */}
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-            Our IPTV Works Everywhere
+            Watch IPTV Anytime, Anywhere
           </h2>
           
           {/* Changed: Subtitle text color for better hierarchy */}
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            *OUR IPTV CAN BE ACCESSED THROUGH ALL DEVICES!
+            Access our IPTV service on any device you choose!
           </p>
         </div>
         
@@ -94,7 +94,7 @@ const DeviceCard = ({ device }) => {
     // Changed: Card background, border, and hover effects updated to the new theme
     <div className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 h-52">
       {/* Device Icon container is still white for max contrast, which is great! */}
-      <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center mb-4">
+      <div className="w-16 h-16 rounded-lg bg-gray-700 flex items-center justify-center mb-4">
         <img
           src={device.logo}
           alt={`${device.name} logo`}
@@ -115,4 +115,5 @@ const DeviceCard = ({ device }) => {
 };
 
 export default DeviceCompatibility;
+
 
