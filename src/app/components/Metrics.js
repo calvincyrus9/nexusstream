@@ -27,10 +27,10 @@ const Metrics = () => {
             <div className="text-slate-400 mt-2">Customer Support</div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
 
 
 export default Metrics;
+
