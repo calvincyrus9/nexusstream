@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 
 const PricingCard = ({ duration, price, popular, devices }) => (
@@ -122,3 +123,4 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
