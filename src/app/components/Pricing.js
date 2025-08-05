@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 
+// The PricingCard component is updated to display the total price more clearly.
 const PricingCard = ({ duration, price, popular, devices }) => (
   <div className={`relative rounded-2xl overflow-hidden ${popular ? 'border-2 border-cyan-500/50' : 'border border-gray-700'}`}>
     {popular && (
@@ -12,13 +13,14 @@ const PricingCard = ({ duration, price, popular, devices }) => (
     <div className={`p-8 ${popular ? 'pt-16' : ''}`}>
       <h3 className="text-2xl font-bold mb-2">{duration}</h3>
       <div className="mb-6">
-        {/* Display price with 2 decimal places */}
         <span className="text-4xl font-bold">${price.toFixed(2)}</span>
-        <span className="text-gray-400">/ {duration.split(' ')[0]}</span>
+        {/* The text now clarifies that the price is the total for the selected devices */}
+        <span className="text-gray-400">
+          {devices > 1 ? ` total for ${devices} devices` : `/ ${duration.split(' ')[0]}`}
+        </span>
       </div>
       
       <ul className="space-y-3 mb-8">
-        {/* Added selected devices to the feature list */}
         {[
           `${devices} Connected Device${devices > 1 ? 's' : ''}`, 
           'All Channels Access', 
@@ -66,11 +68,10 @@ const Pricing = () => {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">One premium plan with flexible durations and connections.</p>
         </div>
         
-        {/* Device Selector */}
         <div className="flex flex-col items-center justify-center mb-12">
             <h3 className="text-xl font-semibold mb-4">How many devices do you need?</h3>
             <div className="flex items-center space-x-2 bg-gray-800 border border-gray-700 rounded-xl p-1">
-                {[1, 2, 3].map(num => (
+                {[1, 2, 3 ,4 , 5].map(num => (
                     <button 
                         key={num}
                         onClick={() => handleDeviceChange(num)}
@@ -82,15 +83,18 @@ const Pricing = () => {
             </div>
             {selectedDevices > 1 && (
                 <p className="mt-4 text-cyan-400 animate-pulse">
-                    A 20% multi-device discount has been applied!
+                    A 20% multi-device discount has been applied to the total!
                 </p>
             )}
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {plans.map(plan => {
-            // Apply 20% discount if more than one device is selected
-            const finalPrice = selectedDevices > 1 ? plan.basePrice * 0.8 : plan.basePrice;
+            // UPDATED PRICE LOGIC
+            // 1. Calculate the undiscounted total by multiplying base price by number of devices
+            const undiscountedTotal = plan.basePrice * selectedDevices;
+            // 2. Apply 20% discount to that total if more than 1 device is selected
+            const finalPrice = selectedDevices > 1 ? undiscountedTotal * 0.8 : undiscountedTotal;
             
             return (
               <PricingCard 
@@ -123,4 +127,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-
