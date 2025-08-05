@@ -1,10 +1,3 @@
-const MetricCard = ({ value, label }) => (
-  <div className="text-center bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-cyan-500/50 transition-all">
-    <div className="text-5xl font-bold text-cyan-400 mb-3">{value}</div>
-    <div className="text-xl font-medium">{label}</div>
-  </div>
-);
-
 const Metrics = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm">
@@ -33,4 +26,5 @@ const Metrics = () => {
 
 
 export default Metrics;
+
 
