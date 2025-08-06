@@ -7,6 +7,7 @@ import Image from 'next/image';
 const ServerNetwork = () => {
   const [activeCountry, setActiveCountry] = useState(null);
   
+  // Server data for the scrolling list
   const servers = [
     { name: 'USA', code: 'us', latency: '12ms' },
     { name: 'UK', code: 'gb', latency: '18ms' },
@@ -18,8 +19,7 @@ const ServerNetwork = () => {
     { name: 'Brazil', code: 'br', latency: '68ms' },
   ];
   
-  // --- IMPROVEMENT 1: Fine-tuned responsive positions ---
-  // The percentage coordinates have been adjusted to better match your target image.
+  // Country data for the map markers with fine-tuned positions
   const countryIcons = [
     { name: 'USA', code: 'us', position: { top: '39%', left: '15%' } },
     { name: 'Canada', code: 'ca', position: { top: '25%', left: '20%' } },
@@ -77,10 +77,7 @@ const ServerNetwork = () => {
         {/* Map Container */}
         <div className="relative max-w-6xl mx-auto rounded-2xl overflow-hidden bg-slate-800/30 backdrop-blur-sm border border-slate-700 shadow-xl">
           <div className="relative aspect-[16/9]">
-            {/* --- IMPROVEMENT 2: Better map visibility --- */}
-            {/* Overlay is made more transparent */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/5 to-slate-900/5"></div>
-            {/* Map image opacity is increased from 50% to 75% */}
             <Image
               src="/world-map.png"
               alt="Global Server Network"
@@ -93,31 +90,35 @@ const ServerNetwork = () => {
               {countryIcons.map((country, index) => (
                 <div
                   key={index}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
-                  style={{ 
-                    top: country.position.top, 
-                    left: country.position.left,
-                    zIndex: activeCountry === index ? 10 : 0
-                  }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  style={{ top: country.position.top, left: country.position.left }}
                   onMouseEnter={() => setActiveCountry(index)}
                   onMouseLeave={() => setActiveCountry(null)}
                 >
-                  <div className="relative">
-                    {/* --- IMPROVEMENT 3: Responsive marker scaling --- */}
-                    {/* The marker now scales with the screen size using clamp() */}
+                  {/* Radar Ping Animation */}
+                  <div className="absolute inset-0 -z-10">
+                    <div className="w-full h-full rounded-full bg-blue-500/50 animate-ping-radar"></div>
+                    <div className="w-full h-full rounded-full bg-blue-500/50 animate-ping-radar [animation-delay:0.5s]"></div>
+                  </div>
+
+                  <div 
+                    className="relative transition-all duration-300"
+                    style={{
+                      transform: activeCountry === index ? 'scale(1.25)' : 'scale(1)',
+                      zIndex: activeCountry === index ? 10 : 0
+                    }}
+                  >
                     <div 
                       className="rounded-full flex items-center justify-center bg-slate-900/80 backdrop-blur-sm border border-blue-500/50 transition-all duration-300"
                       style={{
                         width: 'clamp(32px, 3.5vw, 48px)',
                         height: 'clamp(32px, 3.5vw, 48px)',
-                        transform: activeCountry === index ? 'scale(1.25)' : 'scale(1)',
                         boxShadow: activeCountry === index ? '0 0 15px rgba(59, 130, 246, 0.4)' : 'none',
                       }}
                     >
                       <img
                         src={`https://flagcdn.com/24x18/${country.code}.png`}
                         alt={country.name}
-                        // The flag also scales proportionally
                         style={{ width: 'clamp(16px, 2.2vw, 24px)' }}
                       />
                     </div>
@@ -131,7 +132,6 @@ const ServerNetwork = () => {
                       }}
                     >
                       <div className="bg-blue-600 text-white px-3 py-1.5 rounded-full font-medium whitespace-nowrap"
-                        // The tooltip font size also scales
                         style={{ fontSize: 'clamp(12px, 1.5vw, 14px)' }}
                       >
                         {country.name}
@@ -167,6 +167,21 @@ const ServerNetwork = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+
+        @keyframes ping-radar {
+          0% {
+            transform: scale(0.8);
+            opacity: 0.8;
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+
+        .animate-ping-radar {
+          animation: ping-radar 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
         
         @media (max-width: 768px) {
           .animate-scroll {
@@ -198,5 +213,3 @@ const ServerItem = ({ server }) => {
 };
 
 export default ServerNetwork;
-
-
