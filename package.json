@@ -8,12 +8,14 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
-    "next": "15.4.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "swiper": "^11.2.10"
-  },
+ "dependencies": {
+  "next": "15.4.5",
+  "react": "19.1.0",
+  "react-dom": "19.1.0",
+  "swiper": "^11.2.10",
+  "@heroicons/react": "^2.1.5"
+},
+
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
@@ -26,4 +28,3 @@
     "typescript": "^5"
   }
 }
-
