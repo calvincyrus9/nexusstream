@@ -71,7 +71,7 @@ const Pricing = () => {
         <div className="flex flex-col items-center justify-center mb-12">
             <h3 className="text-xl font-semibold mb-4">How many devices do you need?</h3>
             <div className="flex items-center space-x-2 bg-gray-800 border border-gray-700 rounded-xl p-1">
-                {[1, 2, 3 ,4 , 5].map(num => (
+                {[1, 2, 3 ,].map(num => (
                     <button 
                         key={num}
                         onClick={() => handleDeviceChange(num)}
@@ -127,3 +127,4 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
