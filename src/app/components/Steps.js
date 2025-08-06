@@ -1,3 +1,5 @@
+'use client';
+
 import { 
   ShieldCheckIcon, 
   DevicePhoneMobileIcon, 
@@ -193,3 +195,4 @@ const Steps = () => {
 };
 
 export default Steps;
+
