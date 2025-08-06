@@ -91,7 +91,7 @@ const Steps = () => {
     {
       icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Choose Device/App",
-      description: "Select your preferred streaming device or application from our extensive compatibility list."
+      description: "Pick your preferred device or app from our compatibility list."
     },
     {
       icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
@@ -184,3 +184,4 @@ const Steps = () => {
 };
 
 export default Steps;
+
