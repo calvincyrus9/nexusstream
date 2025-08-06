@@ -1,89 +1,192 @@
-import { ShieldCheckIcon, DevicePhoneMobileIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+import { 
+  ShieldCheckIcon, 
+  DevicePhoneMobileIcon, 
+  PlayIcon, 
+  ArrowPathIcon 
+} from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
-// A single step in the timeline.
-// It includes the icon, the connecting lines, and the text content.
-const Step = ({ icon, title, description, isLast }) => {
+const Step = ({ icon, title, description, isLast, index }) => {
   return (
-    <div className="relative">
-      {/* The timeline and icon container */}
+    <motion.div 
+      className="relative"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.2,
+        ease: "easeOut"
+      }}
+    >
+      {/* Timeline connector */}
+      {!isLast && (
+        <motion.div 
+          className="hidden md:block absolute top-1/2 left-3/4 w-1/2 h-1 bg-gradient-to-r from-blue-500/30 to-blue-500 z-0"
+          initial={{ width: 0 }}
+          whileInView={{ width: "100%" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+        />
+      )}
+      
+      {/* Icon container with 3D effect */}
       <div className="relative flex items-center justify-center">
-        {/* Horizontal Line (for desktop) */}
-        {!isLast && (
-          <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-1/2 w-full h-0.5 bg-slate-700" />
-        )}
-        {/* Vertical Line (for mobile) */}
-        {!isLast && (
-          <div className="md:hidden absolute top-full left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-700" />
-        )}
-
-        {/* The Icon */}
-        <div className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full bg-slate-900 border-2 border-slate-700 group-hover:border-blue-500 transition-all duration-300">
-          <div className="w-16 h-16 flex items-center justify-center rounded-full bg-slate-800 group-hover:bg-blue-900/50 transition-all duration-300">
-            {icon}
-          </div>
+        <div className="relative z-10">
+          <motion.div 
+            className="w-24 h-24 flex items-center justify-center rounded-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-slate-700 group-hover:border-cyan-400 transition-all duration-500 shadow-xl shadow-blue-900/30"
+            whileHover={{ 
+              scale: 1.1,
+              rotate: [0, -5, 0, 5, 0],
+              transition: { duration: 0.5 }
+            }}
+          >
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-md group-hover:opacity-50 opacity-0 transition-opacity duration-500" />
+              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-slate-800 to-slate-900 group-hover:from-blue-900/40 group-hover:to-cyan-900/20 transition-all duration-500 backdrop-blur-sm border border-slate-700/50">
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {icon}
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Floating indicator */}
+          <motion.div 
+            className="absolute -top-2 -right-2 w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-sm shadow-lg"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1, rotate: [0, 20, -20, 10, 0] }}
+            transition={{ 
+              delay: index * 0.3 + 0.5,
+              duration: 0.5,
+              type: "spring"
+            }}
+          >
+            {index + 1}
+          </motion.div>
         </div>
       </div>
       
-      {/* The card content */}
-      <div className="text-center mt-8">
-        <h3 className="text-2xl font-bold mb-3">{title}</h3>
-        <p className="text-slate-400">{description}</p>
-      </div>
-    </div>
+      {/* Content card */}
+      <motion.div 
+        className="mt-10 p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/80 rounded-2xl border border-slate-700/50 backdrop-blur-lg shadow-xl shadow-blue-900/10 group-hover:shadow-cyan-500/20 transition-all duration-500"
+        whileHover={{ 
+          y: -5,
+          borderColor: "rgba(56, 189, 248, 0.3)"
+        }}
+      >
+        <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          {title}
+        </h3>
+        <p className="text-slate-300/90">{description}</p>
+        
+        {/* Animated hover effect */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      </motion.div>
+    </motion.div>
   );
 };
 
-// The main section component.
 const Steps = () => {
-  // We define the steps data here to keep the JSX clean.
   const stepsData = [
     {
-      icon: <PlayIcon className="w-8 h-8 text-blue-400" />,
+      icon: <PlayIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Request Free Trial",
-      description: "Sign up for our risk-free trial to test our service."
+      description: "Sign up for our risk-free trial to test our premium service with no commitments."
     },
     {
-      icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400" />,
+      icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Choose Device/App",
-      description: "Select your preferred streaming device or application."
+      description: "Select your preferred streaming device or application from our extensive compatibility list."
     },
     {
-      icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400" />,
+      icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Activate & Watch",
-      description: "Follow simple setup instructions and start streaming."
+      description: "Follow our simple activation process and start streaming instantly with HD quality."
     },
     {
-      icon: <ArrowPathIcon className="w-8 h-8 text-blue-400" />,
+      icon: <ArrowPathIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Renew Anytime",
-      description: "Continue your subscription with flexible renewal options."
+      description: "Flexible subscription options with easy renewal and cancellation at any time."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-20 px-4 bg-slate-900">
-      <div className="container mx-auto">
-        <div className="text-center mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-            Get Started in 4 Simple Steps
+    <section id="how-it-works" className="py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
+      <div className="container mx-auto max-w-6xl">
+        <motion.div 
+          className="text-center mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Get Streaming in 4 Simple Steps
+            </span>
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Experience premium streaming in minutes, not hours.
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            Experience premium content in minutes with our effortless setup process
           </p>
-        </div>
+          
+          {/* Animated decoration */}
+          <motion.div 
+            className="mx-auto mt-8 w-32 h-1 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 rounded-full"
+            initial={{ width: 0 }}
+            whileInView={{ width: "8rem" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          />
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 md:gap-8 space-y-20 md:space-y-0">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8">
           {stepsData.map((step, index) => (
-            // The 'group' class allows us to style the icon when hovering the parent div.
-            <div key={index} className="group">
+            <motion.div 
+              key={index} 
+              className="group"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <Step
                 icon={step.icon}
                 title={step.title}
                 description={step.description}
                 isLast={index === stepsData.length - 1}
+                index={index}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
+        
+        {/* Animated background elements */}
+        <motion.div 
+          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-blue-900/10 blur-3xl -z-10"
+          animate={{ 
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 -right-20 w-80 h-80 rounded-full bg-cyan-900/10 blur-3xl -z-10"
+          animate={{ 
+            x: [0, -30, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
     </section>
   );
