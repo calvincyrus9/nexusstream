@@ -14,7 +14,7 @@
     "react-dom": "19.1.0",
     "swiper": "^11.2.10",
     "@heroicons/react": "^2.0.18",
-    "framer-motion": "^10.16.4"
+    "framer-motion": "12.23.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -28,4 +28,5 @@
     "typescript": "^5"
   }
 }
+
 
