@@ -56,19 +56,8 @@ const Step = ({ icon, title, description, isLast, index }) => {
             </div>
           </motion.div>
           
-          {/* Floating indicator */}
-          <motion.div 
-            className="absolute -top-2 -right-2 w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-sm shadow-lg"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1, rotate: [0, 20, -20, 10, 0] }}
-            transition={{ 
-              delay: index * 0.3 + 0.5,
-              duration: 0.5,
-              type: "spring"
-            }}
-          >
-            {index + 1}
-          </motion.div>
+          {/* The floating number indicator has been removed from here. */}
+
         </div>
       </div>
       
@@ -195,4 +184,3 @@ const Steps = () => {
 };
 
 export default Steps;
-
