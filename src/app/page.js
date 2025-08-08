@@ -11,7 +11,7 @@ import FAQ from './components/FAQ';
 import ServerNetwork from './components/ServerNetwork';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
-import FloatingCTA from './components/FloatingCTA';
+//import FloatingCTA from './components/FloatingCTA';
 
 export default function Home() {
   return (
@@ -38,7 +38,6 @@ export default function Home() {
       </main>
       <Footer />
 
-      <FloatingCTA />
     </div>
   );
 }
