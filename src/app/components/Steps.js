@@ -79,8 +79,8 @@ const Steps = () => {
     },
     {
       icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
-      title: "Choose Your Player",
-      description: "Select your preferred streaming application from our extensive compatibility list."
+      title: "Choose Device/App",
+      description: "Sign up for our risk-free trial to test our premium service with no commitments."
     },
     {
       icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
