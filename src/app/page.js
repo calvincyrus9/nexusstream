@@ -37,8 +37,6 @@ export default function Home() {
         <FAQ />
       </main>
       <Footer />
-
-      //<FloatingCTA /> {/* 2. Add the component here */}
     </div>
   );
 }
