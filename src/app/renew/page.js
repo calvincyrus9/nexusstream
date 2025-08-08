@@ -12,6 +12,8 @@ const RenewalForm = () => {
   const searchParams = useSearchParams();
   const [duration, setDuration] = useState('1 Month');
   const [devices, setDevices] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   // This effect runs when the component mounts to read URL parameters
   useEffect(() => {
@@ -26,10 +28,41 @@ const RenewalForm = () => {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Thank you for your renewal request! We will process it shortly and send a confirmation to your email.');
-    e.target.reset();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = {
+      formType: 'Renewal Request',
+      email: e.target.email.value,
+      username: e.target.username.value,
+      duration: e.target.duration.value,
+      devices: e.target.devices.value,
+      paymentMethod: e.target.payment.value,
+      country: e.target.country.value,
+    };
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Server error');
+      
+      setSubmitStatus({ success: true, message: 'Renewal request sent successfully! Check your email.' });
+      e.target.reset();
+      // Reset state to reflect URL params after form submission
+      setDuration(searchParams.get('duration') || '1 Month');
+      setDevices(parseInt(searchParams.get('devices'), 10) || 1);
+
+    } catch (error) {
+      setSubmitStatus({ success: false, message: 'Something went wrong. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,18 +77,18 @@ const RenewalForm = () => {
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
-            <input type="email" id="email" required placeholder="Your account email" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
+            <input type="email" id="email" name="email" required placeholder="Your account email" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
           </div>
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-slate-300 mb-2">Your Xtream Username</label>
-            <input type="text" id="username" required placeholder="e.g., user123" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
+            <input type="text" id="username" name="username" required placeholder="e.g., user123" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="duration" className="block text-sm font-medium text-slate-300 mb-2">Duration</label>
-            <select id="duration" required value={duration} onChange={(e) => setDuration(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
+            <select id="duration" name="duration" required value={duration} onChange={(e) => setDuration(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
               <option>1 Month</option>
               <option>3 Months</option>
               <option>6 Months</option>
@@ -64,13 +97,13 @@ const RenewalForm = () => {
           </div>
           <div>
             <label htmlFor="devices" className="block text-sm font-medium text-slate-300 mb-2">How many devices?</label>
-            <input type="number" id="devices" required min="1" value={devices} onChange={(e) => setDevices(parseInt(e.target.value, 10))} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
+            <input type="number" id="devices" name="devices" required min="1" value={devices} onChange={(e) => setDevices(parseInt(e.target.value, 10))} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
           </div>
         </div>
 
         <div>
           <label htmlFor="payment" className="block text-sm font-medium text-slate-300 mb-2">Payment Method</label>
-          <select id="payment" required className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
+          <select id="payment" name="payment" required className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
             <option>PayPal</option>
             <option>Credit / Debit Card</option>
             <option>Crypto (-10% Discount)</option>
@@ -79,7 +112,7 @@ const RenewalForm = () => {
 
         <div>
           <label htmlFor="country" className="block text-sm font-medium text-slate-300 mb-2">Country</label>
-          <input type="text" id="country" required placeholder="Your billing country" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
+          <input type="text" id="country" name="country" required placeholder="Your billing country" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
         </div>
         
         <div className="pt-4">
@@ -90,11 +123,16 @@ const RenewalForm = () => {
         </div>
 
         <div className="text-center pt-4">
-          <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-lg shadow-lg hover:scale-105 transition-transform">
-            Submit Renewal Request
+          <button type="submit" disabled={isSubmitting} className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-lg shadow-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed">
+            {isSubmitting ? 'Submitting...' : 'Submit Renewal Request'}
           </button>
         </div>
       </form>
+      {submitStatus && (
+        <div className={`mt-4 text-center p-3 rounded-md ${submitStatus.success ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
+          {submitStatus.message}
+        </div>
+      )}
       <div className="mt-8 flex items-center justify-center text-slate-400">
           <ShieldCheckIcon className="w-5 h-5 mr-2 text-green-500" />
           <span>All transactions are secure and encrypted.</span>
@@ -103,8 +141,6 @@ const RenewalForm = () => {
   );
 }
 
-// This is the main page component that gets exported.
-// It wraps the form in a Suspense boundary.
 const RenewalPage = () => {
   return (
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
@@ -130,7 +166,7 @@ const RenewalPage = () => {
             </motion.p>
           </div>
           
-          <Suspense fallback={<div className="text-center text-lg">Loading your plan details...</div>}>
+          <Suspense fallback={<div className="text-center text-lg p-8 bg-slate-800/50 rounded-2xl">Loading your plan details...</div>}>
             <RenewalForm />
           </Suspense>
 
