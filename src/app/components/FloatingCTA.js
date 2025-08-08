@@ -46,7 +46,7 @@ const FloatingCTA = () => {
               <p className="text-slate-300 text-xs sm:text-sm md:text-base hidden sm:block">Get instant access to thousands of channels.</p>
             </div>
             <a
-              href="#pricing"
+              href="/trial"
               // Button padding and text size are adjusted for mobile
               className="flex-shrink-0 ml-3 sm:ml-4 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
             >

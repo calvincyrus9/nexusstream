@@ -4,6 +4,7 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FAQ from '../components/FAQ';
 import { motion } from 'framer-motion';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 
@@ -169,6 +170,7 @@ const RenewalPage = () => {
           <Suspense fallback={<div className="text-center text-lg p-8 bg-slate-800/50 rounded-2xl">Loading your plan details...</div>}>
             <RenewalForm />
           </Suspense>
+          <FAQ />
 
         </div>
       </main>

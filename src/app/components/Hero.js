@@ -1,3 +1,7 @@
+'use client';
+import { motion } from 'framer-motion';
+import Link from 'next/link'; // Import the Link component
+
 const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden w-full flex items-center justify-center min-h-screen">
@@ -17,21 +21,6 @@ const Hero = () => {
           <div className="absolute top-1/2 right-1/4 w-[35%] aspect-square rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 animate-blob animation-delay-4000 blur-3xl"></div>
           <div className="absolute top-1/3 left-[15%] w-[15%] aspect-square rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 animate-blob animation-delay-7000 blur-2xl"></div>
         </div>
-        
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-cyan-400/20 animate-particle"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 10 + 2}px`,
-              height: `${Math.random() * 10 + 2}px`,
-              animationDuration: `${Math.random() * 10 + 10}s`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          ></div>
-        ))}
       </div>
       
       <div className="container mx-auto relative z-10 flex flex-col items-center justify-center py-32 px-4">
@@ -51,31 +40,14 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center">
+              {/* --- UPDATED: Button now links to the /trial page --- */}
+              <Link href="/trial" className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center">
                 Start Free Trial
-              </button>
-              <button className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 flex items-center">
+              </Link>
+              {/* --- UPDATED: Button now links to the /renew page --- */}
+              <Link href="/renew" className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 flex items-center">
                 Renew Subscription
-              </button>
-            </div>
-          </div>
-          
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">60K+</div>
-              <div className="text-gray-400">Users</div>
-            </div>
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">4.9/5</div>
-              <div className="text-gray-400">Rating</div>
-            </div>
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">120+</div>
-              <div className="text-gray-400">Countries</div>
-            </div>
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">24/7</div>
-              <div className="text-gray-400">Support</div>
+              </Link>
             </div>
           </div>
         </div>
