@@ -1,88 +1,6 @@
-// components/HeroSection.js
-import React from 'react';
-import Image from 'next/image';
-
-const HeroSection = () => {
+const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col lg:flex-row bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-      {/* Left Content */}
-      <div className="flex-1 py-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center z-10">
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="inline-block px-5 py-2.5 bg-cyan-900/30 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
-            <span className="text-cyan-400 font-medium tracking-wider text-sm">PREMIUM STREAMING SERVICE</span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-              The Future of Streaming
-            </span>
-          </h1>
-          
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl">
-            Experience global live sports, premium channels, and 4K entertainment without buffering. 
-            Stream seamlessly across all your devices.
-          </p>
-          
-          <div className="flex flex-wrap gap-4 mb-16">
-            <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center">
-              Start Free Trial
-            </button>
-            <button className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 flex items-center">
-              Renew Subscription
-            </button>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl">
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">60K+</div>
-              <div className="text-gray-400">Users</div>
-            </div>
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">4.9/5</div>
-              <div className="text-gray-400">Rating</div>
-            </div>
-            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
-              <div className="text-3xl font-bold text-cyan-400">120+</div>
-              <div className="text-gray-400">Countries</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Right Dark Bar - Desktop */}
-      <div className="hidden lg:block w-1/3 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 relative z-10">
-        <div className="absolute inset-0 flex flex-col justify-center items-center p-8">
-          {/* Streaming device images */}
-          <div className="flex flex-col gap-6 w-full max-w-xs">
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 flex items-center justify-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-            </div>
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 flex items-center justify-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-            </div>
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-xl border border-gray-700 flex items-center justify-center">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Mobile Bar - Only shows on mobile */}
-      <div className="lg:hidden bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 w-full py-6">
-        <div className="flex justify-center gap-6 px-4">
-          <div className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700 flex items-center justify-center">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12" />
-          </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700 flex items-center justify-center">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12" />
-          </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700 flex items-center justify-center">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12" />
-          </div>
-        </div>
-      </div>
-      
-      {/* Background elements */}
+    <section id="home" className="relative overflow-hidden w-full flex items-center justify-center min-h-screen">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
         
@@ -99,9 +17,71 @@ const HeroSection = () => {
           <div className="absolute top-1/2 right-1/4 w-[35%] aspect-square rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 animate-blob animation-delay-4000 blur-3xl"></div>
           <div className="absolute top-1/3 left-[15%] w-[15%] aspect-square rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 animate-blob animation-delay-7000 blur-2xl"></div>
         </div>
+        
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-cyan-400/20 animate-particle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 10 + 2}px`,
+              height: `${Math.random() * 10 + 2}px`,
+              animationDuration: `${Math.random() * 10 + 10}s`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
+      </div>
+      
+      <div className="container mx-auto relative z-10 flex flex-col items-center justify-center py-32 px-4">
+        <div className="max-w-3xl text-center">
+          <div className="mb-8">
+            <div className="inline-block px-5 py-2.5 bg-cyan-900/30 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
+              <span className="text-cyan-400 font-medium tracking-wider text-sm">PREMIUM STREAMING SERVICE</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                The Future of Streaming
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+              Experience global live sports, premium channels, and 4K entertainment without buffering. 
+              Stream seamlessly across all your devices.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center">
+                Start Free Trial
+              </button>
+              <button className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 flex items-center">
+                Renew Subscription
+              </button>
+            </div>
+          </div>
+          
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
+              <div className="text-3xl font-bold text-cyan-400">60K+</div>
+              <div className="text-gray-400">Users</div>
+            </div>
+            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
+              <div className="text-3xl font-bold text-cyan-400">4.9/5</div>
+              <div className="text-gray-400">Rating</div>
+            </div>
+            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
+              <div className="text-3xl font-bold text-cyan-400">120+</div>
+              <div className="text-gray-400">Countries</div>
+            </div>
+            <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all">
+              <div className="text-3xl font-bold text-cyan-400">24/7</div>
+              <div className="text-gray-400">Support</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default Hero;
