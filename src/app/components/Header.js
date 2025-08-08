@@ -1,55 +1,108 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // --- UPDATED NAV LINKS ---
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Features', href: '/#features' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Free Trial', href: '/trial' },
+    { name: 'Renew', href: '/renew' },
+    { name: 'FAQ', href: '/#faq' },
+  ];
+
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-gray-900/90 backdrop-blur-md py-3"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <nav className="container mx-auto px-4 flex justify-between items-center flex-wrap">
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-            NexusStream
-          </span>
-        </div>
+    <>
+      <header 
+        className={`fixed w-full z-50 transition-all duration-300 
+          ${isScrolled || isMenuOpen ? 'bg-slate-900/80 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`
+        }
+      >
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+          <Link href="/" className="flex items-center space-x-3 z-50">
+            <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+              NexusStream
+            </span>
+          </Link>
+          
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((item) => (
+              <Link 
+                key={item.name} 
+                href={item.href} 
+                className="font-medium text-slate-200 hover:text-cyan-400 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          
+          <Link 
+            href="/trial"
+            className="hidden md:inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-6 py-2.5 rounded-full font-bold transition-all transform hover:scale-105"
+          >
+            Start Trial
+          </Link>
 
-        <div className="hidden md:flex space-x-8">
-          {["Home", "Free Trial", "Renew", "Features", "FAQ"].map((item) => (
-            <Link
-              key={item}
-              href={`/#${item.toLowerCase().replace(" ", "-")}`}
-              className="font-medium hover:text-cyan-400 transition-colors"
+          <div className="md:hidden z-50">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
-              {item}
-            </Link>
-          ))}
-        </div>
+              {isMenuOpen ? <XMarkIcon className="w-7 h-7" /> : <Bars3Icon className="w-7 h-7" />}
+            </button>
+          </div>
+        </nav>
+      </header>
 
-        <Link
-          href="/#free-trial"
-          className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105"
-        >
-          Start Trial
-        </Link>
-      </nav>
-    </header>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-lg md:hidden"
+          >
+            <motion.div
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="flex flex-col items-center justify-center h-full space-y-8"
+            >
+              {navLinks.map((item) => (
+                <Link 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-2xl font-semibold text-slate-200 hover:text-cyan-400 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
