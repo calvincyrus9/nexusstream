@@ -123,7 +123,7 @@ const TrialPage = () => {
               {/* Benefits Section... */}
               <div className="p-6 bg-slate-800/50 rounded-2xl border border-slate-700">
                 <SparklesIcon className="w-10 h-10 text-cyan-400 mb-4" />
-                <h3 className="text-2xl font-bold text-white">What's Included?</h3>
+                <h3 className="text-2xl font-bold text-white">Whats Included?</h3>
                 <ul className="mt-4 space-y-2 text-slate-300 list-disc list-inside">
                   <li>Full access to 20,000+ channels</li>
                   <li>80,000+ Movies & VOD titles</li>
