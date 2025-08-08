@@ -11,7 +11,7 @@ import FAQ from './components/FAQ';
 import ServerNetwork from './components/ServerNetwork';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
-import FloatingCTA from './components/FloatingCTA'; // 1. Import the new component
+//import FloatingCTA from './components/FloatingCTA'; // 1. Import the new component
 
 export default function Home() {
   return (
@@ -38,7 +38,7 @@ export default function Home() {
       </main>
       <Footer />
 
-      <FloatingCTA /> {/* 2. Add the component here */}
+      //<FloatingCTA /> {/* 2. Add the component here */}
     </div>
   );
 }
