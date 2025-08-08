@@ -1,49 +1,59 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
+import Link from 'next/link'; // Import the Link component
 
-// The PricingCard component remains the same.
-const PricingCard = ({ duration, price, popular, devices }) => (
-  <div className={`relative rounded-2xl overflow-hidden bg-slate-800/50 backdrop-blur-sm ${popular ? 'border-2 border-blue-500' : 'border border-slate-700'}`}>
-    {popular && (
-      <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-center py-2 text-sm font-bold tracking-wider">
-        MOST POPULAR
-      </div>
-    )}
-    
-    <div className={`p-8 ${popular ? 'pt-16' : ''}`}>
-      <h3 className="text-2xl font-bold mb-2 text-white">{duration}</h3>
-      <div className="mb-6">
-        <span className="text-4xl font-bold text-white">${price.toFixed(2)}</span>
-        <span className="text-slate-400">
-          {devices > 1 ? ` total for ${devices} devices` : ` / month`}
-        </span>
-      </div>
+// The PricingCard component is updated to link to the renew page with parameters.
+const PricingCard = ({ duration, price, popular, devices }) => {
+  // Create the URL for the renewal page with query parameters
+  const renewalUrl = `/renew?duration=${encodeURIComponent(duration)}&devices=${devices}`;
+
+  return (
+    <div className={`relative rounded-2xl overflow-hidden bg-slate-800/50 backdrop-blur-sm ${popular ? 'border-2 border-blue-500' : 'border border-slate-700'}`}>
+      {popular && (
+        <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-center py-2 text-sm font-bold tracking-wider">
+          MOST POPULAR
+        </div>
+      )}
       
-      <ul className="space-y-3 mb-8 text-slate-300">
-        {[
-          `${devices} Connected Device${devices > 1 ? 's' : ''}`, 
-          'All Channels Access', 
-          '4K Streaming',
-          '7-Day Catch Up', 
-          '24/7 Support'
-        ].map((item, index) => (
-          <li key={item} className="flex items-center">
-            <svg className={`w-5 h-5 mr-3 flex-shrink-0 ${index === 0 ? 'text-blue-400' : 'text-cyan-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <span className={index === 0 ? 'font-bold text-white' : ''}>{item}</span>
-          </li>
-        ))}
-      </ul>
-      
-      <button className={`w-full py-3 rounded-xl font-bold transition-all transform hover:scale-105 ${popular 
-        ? 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-lg hover:shadow-blue-500/30' 
-        : 'bg-slate-700 hover:bg-slate-600'}`}>
-        Get Started
-      </button>
+      <div className={`p-8 ${popular ? 'pt-16' : ''}`}>
+        <h3 className="text-2xl font-bold mb-2 text-white">{duration}</h3>
+        <div className="mb-6">
+          <span className="text-4xl font-bold text-white">${price.toFixed(2)}</span>
+          <span className="text-slate-400">
+            {devices > 1 ? ` total for ${devices} devices` : ` / month`}
+          </span>
+        </div>
+        
+        <ul className="space-y-3 mb-8 text-slate-300">
+          {[
+            `${devices} Connected Device${devices > 1 ? 's' : ''}`, 
+            'All Channels Access', 
+            '4K Streaming',
+            '7-Day Catch Up', 
+            '24/7 Support'
+          ].map((item, index) => (
+            <li key={item} className="flex items-center">
+              <svg className={`w-5 h-5 mr-3 flex-shrink-0 ${index === 0 ? 'text-blue-400' : 'text-cyan-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span className={index === 0 ? 'font-bold text-white' : ''}>{item}</span>
+            </li>
+          ))}
+        </ul>
+        
+        {/* --- UPDATED: Changed button to Link --- */}
+        <Link 
+          href={renewalUrl}
+          className={`block text-center w-full py-3 rounded-xl font-bold transition-all transform hover:scale-105 ${popular 
+            ? 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-lg hover:shadow-blue-500/30' 
+            : 'bg-slate-700 hover:bg-slate-600'}`}
+        >
+          Get Started
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Pricing = () => {
   const [selectedDevices, setSelectedDevices] = useState(1);
@@ -60,7 +70,7 @@ const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="py-20 px-4 bg-slate-900 text-white">
+    <section id="pricing" className="py-20 px-4 bg-slate-900 text-white overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
@@ -71,7 +81,6 @@ const Pricing = () => {
           </p>
         </div>
         
-        {/* --- UPDATED DEVICE SELECTOR --- */}
         <div className="flex flex-col items-center justify-center mb-16">
             <h3 className="text-xl font-semibold mb-6">How many devices do you need?</h3>
             <div className="flex flex-wrap justify-center items-center gap-3 bg-slate-800/50 border border-slate-700 rounded-full p-2">

@@ -1,12 +1,30 @@
 // src/app/renew/page.js
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation'; // Import useSearchParams
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { CreditCardIcon, ShieldCheckIcon } from '@heroicons/react/24/solid';
 
 const RenewalPage = () => {
+  const searchParams = useSearchParams();
+  const [duration, setDuration] = useState('1 Month');
+  const [devices, setDevices] = useState(1);
+
+  // This effect runs when the component mounts to read URL parameters
+  useEffect(() => {
+    const durationFromUrl = searchParams.get('duration');
+    const devicesFromUrl = searchParams.get('devices');
+
+    if (durationFromUrl) {
+      setDuration(durationFromUrl);
+    }
+    if (devicesFromUrl) {
+      setDevices(parseInt(devicesFromUrl, 10));
+    }
+  }, [searchParams]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Thank you for your renewal request! We will process it shortly and send a confirmation to your email.');
@@ -59,7 +77,8 @@ const RenewalPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="duration" className="block text-sm font-medium text-slate-300 mb-2">Duration</label>
-                  <select id="duration" required className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
+                  {/* The value is now controlled by the component's state */}
+                  <select id="duration" required value={duration} onChange={(e) => setDuration(e.target.value)} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition">
                     <option>1 Month</option>
                     <option>3 Months</option>
                     <option>6 Months</option>
@@ -68,7 +87,8 @@ const RenewalPage = () => {
                 </div>
                 <div>
                   <label htmlFor="devices" className="block text-sm font-medium text-slate-300 mb-2">How many devices?</label>
-                  <input type="number" id="devices" required min="1" defaultValue="1" className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
+                  {/* The value is now controlled by the component's state */}
+                  <input type="number" id="devices" required min="1" value={devices} onChange={(e) => setDevices(parseInt(e.target.value, 10))} className="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 transition" />
                 </div>
               </div>
 
