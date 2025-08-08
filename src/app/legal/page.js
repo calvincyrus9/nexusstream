@@ -43,7 +43,7 @@ const LegalPage = () => {
             subtitle="Last updated: August 8, 2025"
             icon={<ShieldCheckIcon />}
           >
-            <p>Your privacy is important to us. It is NexusStream policy to respect your privacy regarding any information we may collect from you across our website, and other sites we own and operate.</p>
+            <p>Your privacy is important to us. It is NexusXtream policy to respect your privacy regarding any information we may collect from you across our website and other sites we own and operate.</p>
             <h3>Information We Collect</h3>
             <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
             <ul>
@@ -60,11 +60,11 @@ const LegalPage = () => {
             subtitle="Effective from: August 8, 2025"
             icon={<DocumentTextIcon />}
           >
-            <p>By accessing the website at nexusstream-roan.vercel.app, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+            <p>By accessing the website at nexusXtream-roan.vercel.app, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
             <h3>Use License</h3>
-            <p>Permission is granted to temporarily download one copy of the materials on NexusStream website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+            <p>Permission is granted to temporarily download one copy of the materials on NexusXtream website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
             <h3>Disclaimer</h3>
-            <p>The materials on NexusStream website are provided on an as is basis. NexusStream makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            <p>The materials on NexusXtream website are provided on an as is basis. NexusXtream makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
           </PolicySection>
           
           <PolicySection

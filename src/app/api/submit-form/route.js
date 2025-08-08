@@ -20,7 +20,7 @@ export async function POST(request) {
     });
 
     const mailOptions = {
-      from: `"NexusStream Website" <${process.env.EMAIL_USER}>`,
+      from: `"NexusXtream Website" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       subject: `New Submission: ${formType}`,
       html: `<div style="font-family: sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">

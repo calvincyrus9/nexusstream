@@ -18,8 +18,8 @@ export default function Home() {
     // --- THE FIX: Add overflow-hidden here ---
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
       <Head>
-        <title>NexusStream | Premium IPTV Service</title>
-        <meta name="description" content="Experience the future of streaming with NexusStream - Global channels, 4K quality, no buffering" />
+        <title>NexusXtream | Premium IPTV Service</title>
+        <meta name="description" content="Experience the future of streaming with NexusXtream - Global channels, 4K quality, no buffering" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

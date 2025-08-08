@@ -32,7 +32,7 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              About NexusStream
+              About NexusXtream
             </motion.h1>
             <motion.p 
               className="text-xl text-slate-300 max-w-3xl mx-auto"
@@ -40,7 +40,7 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Connecting you to a world of entertainment, one stream at a time.
+              Connecting you to a world of entertainment—one stream at a time.
             </motion.p>
           </div>
         </section>
@@ -53,7 +53,7 @@ const AboutPage = () => {
               <div className="mx-auto mt-4 w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
             </div>
             <p className="text-lg text-slate-300 leading-relaxed text-center">
-              Founded in 2022 by a group of streaming enthusiasts, NexusStream was born from a simple idea: to provide a reliable, high-quality IPTV service that just works. We we&aposre tired of buffering, low-quality channels, and poor customer support. We knew there had to be a better way. Today, we re proud to serve over 60,000 satisfied customers worldwide, delivering a seamless entertainment experience backed by cutting-edge technology and a passion for customer satisfaction.
+              Founded in 2022 by a group of streaming enthusiasts, NexusXtream was born from a simple idea: to provide a reliable, high-quality IPTV service that just works. We we&aposre tired of buffering, low-quality channels, and poor customer support. We knew there had to be a better way. Today, we are proud to serve over 60,000 satisfied customers worldwide... delivering a seamless entertainment experience backed by cutting-edge technology and a passion for customer satisfaction.
             </p>
           </div>
         </section>

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NexusStream | Premium IPTV Service",
-  description: "Experience the future of streaming with NexusStream - Global channels, 4K quality, no buffering",
+  title: "NexusXtream | Premium IPTV Service",
+  description: "Experience the future of streaming with NexuXStream - Global channels, 4K quality, no buffering",
 };
 
 export default function RootLayout({

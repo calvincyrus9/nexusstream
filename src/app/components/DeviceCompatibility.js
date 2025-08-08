@@ -50,12 +50,12 @@ const DeviceCompatibility = () => {
           
           {/* Changed: Heading gradient updated to blue theme */}
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-            Watch IPTV Anytime, Anywhere
+           Watch Anytime, Anywhere
           </h2>
           
           {/* Changed: Subtitle text color for better hierarchy */}
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Access our IPTV service on any device you choose!
+            Access our service on any device you choose.
           </p>
         </div>
         

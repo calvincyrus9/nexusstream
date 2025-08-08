@@ -42,7 +42,7 @@ const Features = () => {
     <section id="features" className="py-20 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Premium Features for Ultimate Streaming</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Premium Features for the Ultimate Streaming Experience</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">Everything you need for a seamless entertainment experience</p>
         </div>
         
