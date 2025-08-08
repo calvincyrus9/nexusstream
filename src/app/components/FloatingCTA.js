@@ -7,11 +7,11 @@ import { PlayIcon } from '@heroicons/react/24/solid';
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // This effect will run once when the component mounts.
-  // It adds a scroll event listener to the window.
+  // This effect adds a scroll event listener to the window
+  // to show/hide the CTA based on scroll position.
   useEffect(() => {
     const toggleVisibility = () => {
-      // If the user scrolls down more than 300 pixels, show the CTA.
+      // Show the CTA after scrolling down 300px
       if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
@@ -19,10 +19,9 @@ const FloatingCTA = () => {
       }
     };
 
-    // Add the event listener
     window.addEventListener('scroll', toggleVisibility);
 
-    // Cleanup function to remove the listener when the component unmounts
+    // Clean up the event listener when the component unmounts
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
@@ -30,23 +29,29 @@ const FloatingCTA = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl z-50"
+          // --- RESPONSIVE CHANGE ---
+          // On small screens, it's pinned to the sides. On medium screens and up, it's centered.
+          className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-[95%] sm:max-w-4xl z-50"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 200, damping: 30 }}
         >
-          <div className="flex items-center justify-between p-4 bg-slate-800/80 backdrop-blur-lg border border-slate-700 rounded-2xl shadow-2xl shadow-blue-900/50">
+          {/* --- RESPONSIVE CHANGE ---
+          // The layout inside the bar now adjusts for screen size. */}
+          <div className="flex items-center justify-between p-3 sm:p-4 bg-slate-800/80 backdrop-blur-lg border border-slate-700 rounded-2xl shadow-2xl shadow-blue-900/50">
             <div className="flex-grow text-left">
-              <h3 className="font-bold text-white text-base md:text-xl">Ready for Uninterrupted Streaming?</h3>
-              <p className="text-slate-300 text-sm md:text-base hidden sm:block">Get instant access to thousands of channels and movies.</p>
+              {/* Text size is smaller on mobile and larger on desktop */}
+              <h3 className="font-bold text-white text-sm sm:text-base md:text-xl">Ready for Uninterrupted Streaming?</h3>
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base hidden sm:block">Get instant access to thousands of channels.</p>
             </div>
             <a
               href="#pricing"
-              className="flex-shrink-0 ml-4 px-5 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+              // Button padding and text size are adjusted for mobile
+              className="flex-shrink-0 ml-3 sm:ml-4 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
             >
               <PlayIcon className="w-5 h-5" />
-              <span className="text-sm sm:text-base">Start Free Trial</span>
+              <span className="text-sm sm:text-base">Start Trial</span>
             </a>
           </div>
         </motion.div>
