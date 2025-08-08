@@ -11,10 +11,12 @@ import FAQ from './components/FAQ';
 import ServerNetwork from './components/ServerNetwork';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
+import FloatingCTA from './components/FloatingCTA'; // 1. Import the new component
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+    // Add some bottom padding here to make space for the CTA
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pb-24 sm:pb-0">
       <Head>
         <title>NexusStream | Premium IPTV Service</title>
         <meta name="description" content="Experience the future of streaming with NexusStream - Global channels, 4K quality, no buffering" />
@@ -22,19 +24,21 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Hero />
-      <Overview />
-      <DeviceCompatibility/>
-      <Metrics />
-      <Steps />
-      <Pricing />
-      <Testimonials />
-      <Features />
-    <ServerNetwork />
-      <FAQ />
+      <main>
+        <Hero />
+        <Overview />
+        <DeviceCompatibility/>
+        <Metrics />
+        <Steps />
+        <Pricing />
+        <Testimonials />
+        <Features />
+        <ServerNetwork />
+        <FAQ />
+      </main>
       <Footer />
 
-
+      <FloatingCTA /> {/* 2. Add the component here */}
     </div>
   );
 }
