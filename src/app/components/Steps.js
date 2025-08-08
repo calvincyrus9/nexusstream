@@ -9,6 +9,7 @@ import {
 import { motion } from 'framer-motion';
 
 const Step = ({ icon, title, description, isLast, index }) => {
+  // This component's code remains the same
   return (
     <motion.div 
       className="relative"
@@ -21,18 +22,12 @@ const Step = ({ icon, title, description, isLast, index }) => {
         ease: "easeOut"
       }}
     >
-      {/* Timeline connector */}
       {!isLast && (
         <motion.div 
-          className="hidden md:block absolute top-1/2 left-3/4 w-1/2 h-1 bg-gradient-to-r from-blue-500/30 to-blue-500 z-0"
-          initial={{ width: 0 }}
-          whileInView={{ width: "100%" }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
+          className="hidden md:block absolute top-12 left-3/4 w-1/2 h-0.5 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 z-0"
         />
       )}
       
-      {/* Icon container with 3D effect */}
       <div className="relative flex items-center justify-center">
         <div className="relative z-10">
           <motion.div 
@@ -55,13 +50,9 @@ const Step = ({ icon, title, description, isLast, index }) => {
               </div>
             </div>
           </motion.div>
-          
-          {/* The floating number indicator has been removed from here. */}
-
         </div>
       </div>
       
-      {/* Content card */}
       <motion.div 
         className="mt-10 p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/80 rounded-2xl border border-slate-700/50 backdrop-blur-lg shadow-xl shadow-blue-900/10 group-hover:shadow-cyan-500/20 transition-all duration-500"
         whileHover={{ 
@@ -73,8 +64,6 @@ const Step = ({ icon, title, description, isLast, index }) => {
           {title}
         </h3>
         <p className="text-slate-300/90">{description}</p>
-        
-        {/* Animated hover effect */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </motion.div>
     </motion.div>
@@ -91,7 +80,7 @@ const Steps = () => {
     {
       icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Choose Device/App",
-      description: "Pick your preferred device or app from our compatibility list."
+      description: "Select your preferred streaming device or application from our extensive compatibility list."
     },
     {
       icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
@@ -106,7 +95,8 @@ const Steps = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
+    // --- THE FIX: Added `relative` class to the section ---
+    <section id="how-it-works" className="relative py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-24"
@@ -124,7 +114,6 @@ const Steps = () => {
             Experience premium content in minutes with our effortless setup process
           </p>
           
-          {/* Animated decoration */}
           <motion.div 
             className="mx-auto mt-8 w-32 h-1 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 rounded-full"
             initial={{ width: 0 }}
@@ -153,7 +142,7 @@ const Steps = () => {
           ))}
         </div>
         
-        {/* Animated background elements */}
+        {/* These animated background elements are now properly contained */}
         <motion.div 
           className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-blue-900/10 blur-3xl -z-10"
           animate={{ 
@@ -184,4 +173,3 @@ const Steps = () => {
 };
 
 export default Steps;
-
