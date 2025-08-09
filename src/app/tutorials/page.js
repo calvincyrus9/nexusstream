@@ -8,22 +8,97 @@ import { DevicePhoneMobileIcon, TvIcon, ComputerDesktopIcon, CubeIcon } from '@h
 // Data for the tutorials
 const tutorialsData = {
   "Smart TVs": [
-    { title: "Samsung & LG TV Setup", content: "Install the 'IPTV Smarters Pro' or 'SET IPTV' app from your TV's app store. Open the app and enter the M3U link or Xtream Codes we provided in your welcome email." },
-    { title: "Sony TV (Android TV)", content: "Navigate to the Google Play Store on your Sony TV. Search for and install the 'TiviMate' or 'IPTV Smarters' app. Follow the in-app instructions to add your subscription details." },
+    {
+      title: "Samsung & LG TV Setup",
+      content:
+        "1. Open your TV’s app store (Samsung Smart Hub or LG Content Store). " +
+        "2. Search for 'IPTV Smarters Pro' or 'SET IPTV'. " +
+        "3. Download and install the app. " +
+        "4. Launch the app. " +
+        "5. When prompted, enter the M3U link or Xtream Codes subscription details from your welcome email. " +
+        "6. Start watching your IPTV channels."
+    },
+    {
+      title: "Sony TV (Android TV)",
+      content:
+        "1. Go to the Google Play Store on your Sony Android TV. " +
+        "2. Search for 'TiviMate' or 'IPTV Smarters'. " +
+        "3. Install the app. " +
+        "4. Open the app and follow the setup instructions. " +
+        "5. Add your IPTV subscription details (M3U URL or Xtream Codes). " +
+        "6. Enjoy streaming."
+    }
   ],
   "Mobile Devices": [
-    { title: "iOS (iPhone/iPad) Setup", content: "Download the 'GSE Smart IPTV' app from the App Store. Open the app, go to 'Remote Playlists', tap the '+' icon, and add the M3U URL from your email." },
-    { title: "Android (Phone/Tablet) Setup", content: "From the Google Play Store, install 'IPTV Smarters Pro'. Open the app, select 'Login with Xtream Codes API', and enter your username, password, and server URL." },
+    {
+      title: "iOS (iPhone/iPad) Setup",
+      content:
+        "1. Open the App Store on your iPhone or iPad. " +
+        "2. Search for 'GSE Smart IPTV'. " +
+        "3. Download and install the app. " +
+        "4. Launch the app and go to 'Remote Playlists'. " +
+        "5. Tap '+' to add a new playlist. " +
+        "6. Enter the M3U URL from your welcome email. " +
+        "7. Save and start streaming."
+    },
+    {
+      title: "Android (Phone/Tablet) Setup",
+      content:
+        "1. Open the Google Play Store on your Android device. " +
+        "2. Search for 'IPTV Smarters Pro'. " +
+        "3. Download and install the app. " +
+        "4. Open the app and select 'Login with Xtream Codes API'. " +
+        "5. Enter your username, password, and server URL from your welcome email. " +
+        "6. Confirm and start watching."
+    }
   ],
   "Streaming Sticks": [
-    { title: "Amazon Firestick Setup", content: "Enable 'Apps from Unknown Sources' in your Firestick settings. Install the 'Downloader' app and use it to enter the download link for our custom IPTV app. Install and log in." },
-    { title: "Chromecast with Google TV", content: "Install 'IPTV Smarters' or 'TiviMate' from the Google Play Store. Open the application and input the subscription credentials sent to your email." },
+    {
+      title: "Amazon Firestick Setup",
+      content:
+        "1. Go to Settings > My Fire TV > Developer Options. " +
+        "2. Enable 'Apps from Unknown Sources' for Downloader. " +
+        "3. From the Firestick home, open the Amazon Appstore and install the 'Downloader' app. " +
+        "4. Open Downloader and enter the URL to download the IPTV app APK: " +
+        "   Code For IPTV Smarters Pro: 78522 " +
+        "   Code For TiviMate: 272483 " +
+        "5. Download and install the APK. " +
+        "6. Open the installed IPTV app and log in with your subscription credentials. " +
+        "7. Start streaming your channels."
+
+    },
+    {
+      title: "Chromecast with Google TV",
+      content:
+        "1. Open the Google Play Store on Chromecast. " +
+        "2. Search for 'IPTV Smarters' or 'TiviMate'. " +
+        "3. Install the app. " +
+        "4. Launch it and input your subscription details from your welcome email. " +
+        "5. Begin streaming."
+    }
   ],
   "Computers": [
-    { title: "Windows PC Setup", content: "Download and install the 'VLC Media Player'. Open VLC, go to Media > Open Network Stream, and paste your M3U link. Press Play to start watching." },
-    { title: "Mac OS Setup", content: "Install 'VLC Media Player' from the official website. Open the application, click on File > Open Network, and paste your M3U playlist URL." },
-  ],
+    {
+      title: "Windows PC Setup",
+      content:
+        "1. Download and install VLC Media Player from videolan.org. " +
+        "2. Open VLC. " +
+        "3. Click Media > Open Network Stream. " +
+        "4. Paste your M3U playlist URL from your welcome email. " +
+        "5. Click Play to start watching."
+    },
+    {
+      title: "Mac OS Setup",
+      content:
+        "1. Download VLC Media Player from videolan.org. " +
+        "2. Install and open VLC. " +
+        "3. Click File > Open Network. " +
+        "4. Paste the M3U playlist URL from your welcome email. " +
+        "5. Press Open to start streaming."
+    }
+  ]
 };
+
 
 const TutorialCard = ({ title, content }) => (
   <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors">

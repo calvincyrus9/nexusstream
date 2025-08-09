@@ -75,8 +75,8 @@ const ContactPage = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <ContactMethod icon={<EnvelopeIcon />} title="Email Support">
               <p>Send us an email for any inquiries. We typically respond within a few hours.</p>
-              <a href="mailto:support@nexusstream.com" className="text-blue-400 hover:underline mt-2 inline-block">
-                support@nexusstream.com
+              <a href="mailto:support@nexusxtream.com" className="text-blue-400 hover:underline mt-2 inline-block">
+                support@nexusxtream.com
               </a>
             </ContactMethod>
             <ContactMethod icon={<ChatBubbleLeftRightIcon />} title="Live Chat">
