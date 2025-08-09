@@ -46,8 +46,7 @@ const Hero = () => {
               </span>
             </h1>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-              Experience global live sports, premium channels, and 4K entertainment without buffering. 
-              Stream seamlessly across all your devices.
+              Experience global live sports, premium channels, and 4K entertainment—all without buffering. Stream seamlessly across every device.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
