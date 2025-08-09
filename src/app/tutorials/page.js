@@ -59,10 +59,10 @@ const tutorialsData = {
         "1. Go to Settings > My Fire TV > Developer Options. " +
         "2. Enable 'Apps from Unknown Sources' for Downloader. " +
         "3. From the Firestick home, open the Amazon Appstore and install the 'Downloader' app. " +
-        "4. Open Downloader and enter the URL to download the IPTV app APK: " +
+        "4. Open Downloader and enter the Short Code to download the IPTV app: " +
         "   Code For IPTV Smarters Pro: 78522 " +
         "   Code For TiviMate: 272483 " +
-        "5. Download and install the APK. " +
+        "5. Download and install the APP. " +
         "6. Open the installed IPTV app and log in with your subscription credentials. " +
         "7. Start streaming your channels."
 
