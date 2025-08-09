@@ -4,9 +4,7 @@ import nodemailer from 'nodemailer';
 import { GoogleAuth } from 'google-auth-library';
 import { google } from 'googleapis';
 
-// This function handles writing a new row to your Google Sheet.
 async function writeToSheet(formType, data) {
-  // Authenticate with Google Sheets API
   const auth = new GoogleAuth({
     credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS),
     scopes: 'https://www.googleapis.com/auth/spreadsheets',
@@ -14,38 +12,32 @@ async function writeToSheet(formType, data) {
 
   const sheets = google.sheets({ version: 'v4', auth });
 
-  // Determine which sheet (tab) to write to
-  const sheetName = formType === 'Trial Request' ? 'Trials' : 'Renewals';
-  
-  // Prepare the row data in the correct order
+  let sheetName;
   let rowData;
+
+  // Prepare the row data, now including IP and User Agent
   if (formType === 'Trial Request') {
-    rowData = [
-      new Date().toISOString(),
-      data.email,
-      data.device,
-      data.country,
-      data.language,
-      data.adultContent,
+    sheetName = 'Trials';
+    rowData = [ 
+      new Date().toISOString(), data.email, data.device, data.country, 
+      data.language, data.adultContent, data.ipAddress, data.userAgent 
     ];
   } else if (formType === 'Renewal Request') {
-    rowData = [
-      new Date().toISOString(),
-      data.email,
-      data.username,
-      data.duration,
-      data.devices,
-      data.paymentMethod,
-      data.country,
+    sheetName = 'Renewals';
+    rowData = [ 
+      new Date().toISOString(), data.email, data.username, data.duration, 
+      data.devices, data.paymentMethod, data.country, data.ipAddress, data.userAgent 
+    ];
+  } else if (formType === 'Contact Inquiry') {
+    sheetName = 'Contacts';
+    rowData = [ 
+      new Date().toISOString(), data.name, data.email, data.message, 
+      data.ipAddress, data.userAgent 
     ];
   } else {
-    // For the contact form, we'll just log it simply
-     rowData = [new Date().toISOString(), data.name, data.email, data.message];
-     // Make sure you have a 'Contacts' sheet with headers: Timestamp, Name, Email, Message
-     sheetName = 'Contacts'; 
+    return; 
   }
 
-  // Append the new row to the sheet
   await sheets.spreadsheets.values.append({
     spreadsheetId: process.env.GOOGLE_SHEET_ID,
     range: `${sheetName}!A1`,
@@ -56,13 +48,23 @@ async function writeToSheet(formType, data) {
   });
 }
 
-
 export async function POST(request) {
   try {
+    // --- NEW: Capture IP and User Agent from request headers ---
+    const ipAddress = request.headers.get('x-forwarded-for') || 'Not available';
+    const userAgent = request.headers.get('user-agent') || 'Not available';
+
     const formData = await request.json();
     const { formType, ...data } = formData;
 
-    // --- 1. Send Email (existing logic) ---
+    // Add the new info to the data object that gets sent
+    const enhancedData = {
+      ...data,
+      ipAddress,
+      userAgent,
+    };
+
+    // --- Email Sending Logic (will now include the new data automatically) ---
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: parseInt(process.env.EMAIL_PORT, 10),
@@ -81,7 +83,7 @@ export async function POST(request) {
                <h2 style="color: #3b82f6;">New ${formType} Submission</h2>
                <table style="width: 100%; border-collapse: collapse;">
                  <tbody>
-                   ${Object.entries(data).map(([key, value]) => `
+                   ${Object.entries(enhancedData).map(([key, value]) => `
                        <tr style="border-bottom: 1px solid #eee;">
                          <td style="padding: 8px; text-transform: capitalize; font-weight: bold; color: #333;">${key.replace(/([A-Z])/g, ' $1')}</td>
                          <td style="padding: 8px; color: #555;">${value}</td>
@@ -93,11 +95,8 @@ export async function POST(request) {
 
     await transporter.sendMail(mailOptions);
 
-    // --- 2. Write to Google Sheet ---
-    // We only write to the sheet for Trial and Renewal forms
-    if (formType === 'Trial Request' || formType === 'Renewal Request' || formType === 'Contact Inquiry') {
-      await writeToSheet(formType, data);
-    }
+    // --- Write to Google Sheet with the enhanced data ---
+    await writeToSheet(formType, enhancedData);
 
     return NextResponse.json({ message: 'Submission successful!' }, { status: 200 });
 
