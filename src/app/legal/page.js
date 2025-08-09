@@ -60,7 +60,7 @@ const LegalPage = () => {
             subtitle="Effective from: August 8, 2025"
             icon={<DocumentTextIcon />}
           >
-            <p>By accessing the website at nexusXtream-roan.vercel.app, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+            <p>By accessing the website at nexusXtream, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
             <h3>Use License</h3>
             <p>Permission is granted to temporarily download one copy of the materials on NexusXtream website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
             <h3>Disclaimer</h3>
