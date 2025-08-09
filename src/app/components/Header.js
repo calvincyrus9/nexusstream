@@ -38,7 +38,7 @@ const Header = () => {
           <Link href="/" className="flex items-center space-x-3 z-50">
             <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-              NexusStream
+              NexusXtream
             </span>
           </Link>
           
