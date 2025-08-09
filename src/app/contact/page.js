@@ -43,7 +43,7 @@ const ContactPage = () => {
 
       if (!response.ok) throw new Error('Server error during submission.');
       
-      setSubmitStatus({ success: true, message: 'Message sent! We will get back to you shortly.' });
+      setSubmitStatus({ success: true, message: 'Your message has been received — our support team will get back to you soon.' });
       e.target.reset();
 
     } catch (error) {

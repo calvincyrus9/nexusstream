@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import FAQ from '../components/FAQ';
 import { motion } from 'framer-motion';
 import { SparklesIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
+import TutorialsContent from '../components/TutorialsContent';
 
 const TrialPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +35,7 @@ const TrialPage = () => {
 
       if (!response.ok) throw new Error('Server error during submission.');
       
-      setSubmitStatus({ success: true, message: 'Trial request sent! Please check your email.' });
+      setSubmitStatus({ success: true, message: 'Your request is being prepared — one of our team members will send it to you shortly.' });
       e.target.reset();
 
     } catch (error) {
@@ -144,6 +145,7 @@ const TrialPage = () => {
         </div>
         
         <div className="mt-24">
+            <TutorialsContent/>
           <FAQ />
         </div>
       </main>

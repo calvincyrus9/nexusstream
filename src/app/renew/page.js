@@ -53,7 +53,7 @@ const RenewalForm = () => {
 
       if (!response.ok) throw new Error('Server error');
       
-      setSubmitStatus({ success: true, message: 'Renewal request sent successfully! Check your email.' });
+      setSubmitStatus({ success: true, message: 'Your renewal request is being processed — our team will email you the details shortly.' });
       e.target.reset();
       // Reset state to reflect URL params after form submission
       setDuration(searchParams.get('duration') || '1 Month');
