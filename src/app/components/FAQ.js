@@ -31,25 +31,33 @@ const FAQItem = ({ question, answer }) => {
 const FAQ = () => {
   const faqs = [
     {
-      question: "Which devices are supported?",
-      answer: "Our service works on all major devices including Android TV, Firestick, iOS, Android, Smart TVs, MAG boxes, and more."
-    },
-    {
-      question: "How does the free trial work?",
-      answer: "Our free trial gives you full access to our service for 24 hours with no payment required. No credit card needed."
-    },
-    {
-      question: "How many devices can I use simultaneously?",
-      answer: "Our standard plan allows for 2 simultaneous connections. We offer options for more connections if needed."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept PayPal, all major credit cards, and cryptocurrencies (Bitcoin, Ethereum, USDT)."
-    },
-    {
-      question: "How can I get support if I need help?",
-      answer: "Our 24/7 support team is available via live chat on our website and through our dedicated support ticket system."
-    }
+    question: "Which devices are supported?",
+    answer: "Our IPTV service is compatible with a wide range of devices including Android TV, Amazon Firestick & Fire TV, iOS devices (iPhone/iPad), Android smartphones and tablets, all major Smart TVs (Samsung, LG, Sony), MAG boxes, Roku, and more. If your device supports IPTV apps like IPTV Smarters, TiviMate, or VLC, you’re good to go!"
+  },
+  {
+    question: "How does the free trial work?",
+    answer: "We offer a 24-hour free trial with full access to our entire channel lineup — no credit card or payment info required. This trial lets you test the service risk-free to ensure it fits your needs before committing."
+  },
+  {
+    question: "How many devices can I use simultaneously?",
+    answer: "Our standard subscription supports 1 device streaming at a time. Need more? We provide multi-device packages with up to 5 simultaneous connections, each eligible for a 20% discount. Contact us for custom plans tailored to your household or business."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept a variety of secure payment methods including PayPal, all major credit and debit cards, and popular cryptocurrencies such as Bitcoin (BTC), Ethereum (ETH), and Tether (USDT). Payments are processed securely to protect your information."
+  },
+  {
+    question: "How can I get support if I need help?",
+    answer: "Our dedicated support team is available 24/7 via live chat on our website, email, and a ticketing system. Whether you have setup questions, billing inquiries, or technical issues, we’re here to assist you promptly."
+  },
+  {
+    question: "Is the IPTV service legal?",
+    answer: "We provide IPTV services through legitimate sources and comply with all applicable laws. Our subscription offers access to legally licensed content. We encourage users to ensure they comply with their local regulations when using IPTV services."
+  },
+  {
+    question: "Can I upgrade or cancel my subscription anytime?",
+    answer: "Yes! You can upgrade, downgrade, or cancel your subscription at any time without penalties. Changes will take effect immediately or at the end of your current billing cycle, depending on your request."
+  }
   ];
   
   return (
