@@ -30,35 +30,52 @@ const FAQItem = ({ question, answer }) => {
 
 const FAQ = () => {
   const faqs = [
-    {
-    question: "Which devices are supported?",
-    answer: "Our IPTV service is compatible with a wide range of devices including Android TV, Amazon Firestick & Fire TV, iOS devices (iPhone/iPad), Android smartphones and tablets, all major Smart TVs (Samsung, LG, Sony), MAG boxes, Roku, and more. If your device supports IPTV apps like IPTV Smarters, TiviMate, or VLC, you’re good to go!"
+  {
+    question: "Which devices can I use with the service?",
+    answer: "Our IPTV service supports a broad array of devices, including Android TV, Amazon Firestick, iOS and Android smartphones and tablets, Smart TVs from Samsung, LG, Sony, MAG boxes, Roku, Apple TV, Windows and Mac computers, Enigma2 receivers, Nvidia Shield, and more. If your device can run popular IPTV apps like TiviMate, IPTV Smarters, or VLC, you're all set."
   },
   {
-    question: "How does the free trial work?",
-    answer: "We offer a 24-hour free trial with full access to our entire channel lineup — no credit card or payment info required. This trial lets you test the service risk-free to ensure it fits your needs before committing."
+    question: "What does the free trial include and how do I access it?",
+    answer: "We provide a fully featured 24-hour trial period with no payment information required. Simply complete the trial request on our website, and you’ll get temporary access to all channels and features, allowing you to evaluate our service risk-free."
   },
   {
-    question: "How many devices can I use simultaneously?",
-    answer: "Our standard subscription supports 1 device streaming at a time. Need more? We provide multi-device packages with up to 5 simultaneous connections, each eligible for a 20% discount. Contact us for custom plans tailored to your household or business."
+    question: "How many devices can I stream on at the same time?",
+    answer: "The standard subscription covers streaming on one device at any given time. Should you require simultaneous access on multiple devices, additional connections are available at a discounted rate. You can also log out from one device and log in on another if needed."
   },
   {
-    question: "What payment methods do you accept?",
-    answer: "We accept a variety of secure payment methods including PayPal, all major credit and debit cards, and popular cryptocurrencies such as Bitcoin (BTC), Ethereum (ETH), and Tether (USDT). Payments are processed securely to protect your information."
+    question: "Which payment options do you support?",
+    answer: "We accept a variety of payment methods to suit your preferences, including PayPal, major credit cards (Visa, Mastercard, Amex, and more), and cryptocurrencies such as Bitcoin, Ethereum, and Tether. All transactions are securely processed."
   },
   {
-    question: "How can I get support if I need help?",
-    answer: "Our dedicated support team is available 24/7 via live chat on our website, email, and a ticketing system. Whether you have setup questions, billing inquiries, or technical issues, we’re here to assist you promptly."
+    question: "What support channels are available if I need help?",
+    answer: "Our support team is ready around the clock through live chat on our website and a dedicated ticketing system. Whether it’s setup assistance, billing questions, or technical troubles, we’re here to help promptly."
   },
   {
-    question: "Is the IPTV service legal?",
-    answer: "We provide IPTV services through legitimate sources and comply with all applicable laws. Our subscription offers access to legally licensed content. We encourage users to ensure they comply with their local regulations when using IPTV services."
+    question: "Can I watch both live TV and on-demand content?",
+    answer: "Yes, our service provides an extensive selection of live channels as well as a vast library of on-demand movies and TV shows, ensuring entertainment options for all preferences."
   },
   {
-    question: "Can I upgrade or cancel my subscription anytime?",
-    answer: "Yes! You can upgrade, downgrade, or cancel your subscription at any time without penalties. Changes will take effect immediately or at the end of your current billing cycle, depending on your request."
+    question: "Do I need to use a VPN with this IPTV service?",
+    answer: "Using a VPN is optional. While not required, a VPN can enhance your privacy and help bypass geo-restrictions in certain regions, improving your streaming experience."
+  },
+  {
+    question: "Is it possible to access my IPTV subscription while traveling abroad?",
+    answer: "Absolutely! You can enjoy your IPTV subscription globally wherever you have a reliable internet connection, so your entertainment travels with you."
+  },
+  {
+    question: "How often is the channel lineup and on-demand library updated?",
+    answer: "We regularly refresh our channel list and on-demand content to keep you up to date with the latest entertainment, ensuring fresh and relevant programming."
+  },
+  {
+    question: "What should I do if I experience technical difficulties or other issues?",
+    answer: "If you encounter any problems, please contact our 24/7 support team via live chat or the ticketing system. Our experts will work with you to resolve issues quickly and efficiently."
+  },
+  {
+    question: "Can I upgrade, downgrade, or cancel my subscription at any time?",
+    answer: "Yes, you have full control over your subscription plan. You can upgrade, downgrade, or cancel anytime without penalties. Changes will take effect immediately or at the end of your billing cycle, depending on your preference."
   }
-  ];
+];
+
   
   return (
     <section id="faq" className="py-20 px-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50">

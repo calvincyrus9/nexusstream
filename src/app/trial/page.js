@@ -64,7 +64,7 @@ const TrialPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Experience the full power of NexusStream with no commitment.
+              Experience the full power of NexusXtream with no commitment.
             </motion.p>
           </div>
 
