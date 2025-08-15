@@ -1,7 +1,6 @@
 // src/app/tutorials/page.js
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 import TutorialsContent from '../components/TutorialsContent'; // Import the reusable component
 import SEO from '../../../next-seo.config';
 
@@ -28,12 +27,10 @@ const TutorialsPage = () => {
     <>
     
     <div className="bg-slate-900 min-h-screen text-white">
-      <Header />
       <main className="pt-32 pb-20">
         {/* The component now handles its own layout, so no extra wrappers are needed */}
         <TutorialsContent />
       </main>
-      <Footer />
     </div>
      </>
   );
