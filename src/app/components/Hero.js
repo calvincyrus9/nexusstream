@@ -1,6 +1,9 @@
 const Hero = () => {
   return (
-    <section id="home" className="relative overflow-hidden w-full flex items-center justify-center min-h-screen">
+    <section
+  id="home"
+  className="relative overflow-hidden w-full flex items-center justify-center min-h-screen pt-[15px]" // added pt-[15px]
+>
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
         
