@@ -4,16 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node ./sitemap.js && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "framer-motion": "12.23.12",
+    "globby": "^14.1.0",
     "google-auth-library": "^10.2.1",
     "googleapis": "^155.0.0",
     "next": "15.4.5",
+    "next-seo": "^6.8.0",
     "nodemailer": "^7.0.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",

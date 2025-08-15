@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
+import { NextSeo } from 'next-seo';
+
 
 const RenewalForm = () => {
   const searchParams = useSearchParams();
@@ -58,6 +60,7 @@ const RenewalForm = () => {
   };
 
   return (
+
     <motion.div 
       className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700"
       initial={{ opacity: 0, scale: 0.95 }}
@@ -130,6 +133,17 @@ const RenewalForm = () => {
 
 const RenewalPage = () => {
   return (
+        <>
+      <NextSeo
+        title="Renew IPTV Subscription"
+        description="Renew your IPTV plan with NexusXtream quickly and securely."
+        canonical="https://nexusxtream.com/renew"
+        openGraph={{
+          url: 'https://nexusxtream.com/renew',
+          title: 'Renew IPTV Subscription | NexusXtream',
+          description: 'Renew your IPTV plan with NexusXtream quickly and securely.',
+        }}
+      />
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
       <Header />
       <main className="pt-32 pb-20">
@@ -154,6 +168,7 @@ const RenewalPage = () => {
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 
