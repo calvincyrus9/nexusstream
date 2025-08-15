@@ -1,7 +1,7 @@
 // Import the file system module from Node.js
 const fs = require('fs');
 // Import the globby library to find files matching a pattern
-const globby = require('globby');
+const globby = require('globby').default;
 
 // Function to generate the sitemap
 async function generateSitemap() {
@@ -10,8 +10,8 @@ async function generateSitemap() {
 
   // Find all .jsx files in the pages directory, excluding certain ones
   const pages = await globby([
-    'pages/**/*.jsx', // Include all .jsx files
-    '!pages/_*.jsx',   // Exclude files like _app.js and _document.js
+    'pages/**/*.js', // Include all .jsx files
+    '!pages/_*.js',   // Exclude files like _app.js and _document.js
     '!pages/api',      // Exclude the api folder
   ]);
 
