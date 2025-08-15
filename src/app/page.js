@@ -11,14 +11,10 @@ import ServerNetwork from './components/ServerNetwork';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import FloatingCTA from './components/FloatingCTA';
-import { DefaultSeo } from 'next-seo';
-import SEO from '../../next-seo.config';
 
 export default function Home() {
   return (
-    <>
-      <DefaultSeo {...SEO} />
-      {/* --- THE FIX: Add overflow-hidden here SEO-IPTV --- */}
+    
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
         <Header />
         <main>
@@ -36,6 +32,5 @@ export default function Home() {
         <Footer />
         <FloatingCTA />
       </div>
-    </>
   );
 }
