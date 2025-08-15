@@ -9,23 +9,8 @@ import { motion } from 'framer-motion';
 import { SparklesIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
 import SEO from '../../../next-seo.config';
 
-export async function generateMetadata() {
-  const title = "Free IPTV Trial";
-  const description = "Sign up for a free trial of NexusXtream and experience our high-quality IPTV service.";
-  const url = "/trial";
-
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      ...SEO.openGraph,
-      title: `${title} | NexusXtream`,
-      description,
-      url,
-    },
-  };
-}
+import { generateMetadata } from "./metadata"; // import from server file
+export { generateMetadata }; // re-export so Next.js sees it
 
 const TrialPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -7,26 +7,8 @@ import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 
-import SEO from '../../../next-seo.config';
-
-
-export async function generateMetadata() {
-  const title = "Renew IPTV Subscription";
-  const description = "Renew your IPTV plan with NexusXtream quickly and securely.";
-  const url = "/renew";
-
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      ...SEO.openGraph,
-      title: `${title} | NexusXtream`,
-      description,
-      url,
-    },
-  };
-}
+import { generateMetadata } from "./metadata"; // import from server file
+export { generateMetadata }; // re-export so Next.js sees it
 
 
 const RenewalForm = () => {
