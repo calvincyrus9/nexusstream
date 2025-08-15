@@ -1,7 +1,5 @@
 // /src/app/contact/page.js
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import SEO from '../../../next-seo.config';
 import ContactClient from './ContactClient'; // Import the new client component
 
@@ -29,11 +27,9 @@ const ContactPage = () => {
   return (
     <>
       <div className="bg-slate-900 min-h-screen text-white">
-        <Header />
         <main className="pt-32 pb-20">
           <ContactClient />
         </main>
-        <Footer />
       </div>
     </>
   );

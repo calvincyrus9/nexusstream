@@ -1,7 +1,5 @@
 // /src/app/renew/page.js
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import SEO from '../../../next-seo.config';
 import RenewalClient from './RenewalClient'; // Import the new client component
 
@@ -28,11 +26,9 @@ export async function generateMetadata() {
 const RenewalPage = () => {
   return (
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
-      <Header />
       <main className="pt-32 pb-20">
         <RenewalClient />
       </main>
-      <Footer />
     </div>
   );
 };

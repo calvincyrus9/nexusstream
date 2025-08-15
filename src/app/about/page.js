@@ -1,7 +1,5 @@
 // /src/app/about/page.js
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import SEO from '../../../next-seo.config';
 import AboutClient from './AboutClient'; // Import the new client component
 
@@ -28,11 +26,9 @@ export async function generateMetadata() {
 const AboutPage = () => {
   return (
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
-      <Header />
       <main className="pt-24 pb-20">
         <AboutClient />
       </main>
-      <Footer />
     </div>
   );
 };

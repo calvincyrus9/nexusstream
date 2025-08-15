@@ -1,8 +1,6 @@
 // src/app/legal/page.js
 import React from 'react';
 import { ShieldCheckIcon, DocumentTextIcon, ExclamationTriangleIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
-import Header from '../components/Header'; // Re-using your existing header
-import Footer from '../components/Footer'; // Re-using your existing footer
 import SEO from '../../../next-seo.config';
 
 export async function generateMetadata() {
@@ -46,7 +44,6 @@ const LegalPage = () => {
      <>
      
     <div className="bg-slate-900 min-h-screen text-white">
-      <Header />
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-20">
@@ -104,7 +101,6 @@ const LegalPage = () => {
           </PolicySection>
         </div>
       </main>
-      <Footer />
     </div>
         </>
 
