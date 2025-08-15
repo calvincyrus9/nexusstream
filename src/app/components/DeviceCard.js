@@ -1,7 +1,7 @@
 // components/DeviceCard.js
 import React from 'react';
 import styled from 'styled-components';
-
+import Image from 'next/image';
 const Card = styled.div`
   display: flex !important;
   flex-direction: column;
