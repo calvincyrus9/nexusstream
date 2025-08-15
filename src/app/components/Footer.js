@@ -11,7 +11,7 @@ const Footer = () => {
                 {/* --- THIS IS THE UPDATED LOGO --- */}
                 {/* 2. Replace the div with this Image component */}
                 <Image
-                    src="/logo.png" // Use the same logo file
+                    src="/logo.jpeg" // Use the same logo file
                     alt="NexusXtream Logo"
                     width={100}
                     height={100}

@@ -40,7 +40,7 @@ const Header = () => {
             {/* --- THIS IS THE UPDATED LOGO --- */}
             {/* 2. Replace the div with this Image component */}
             <Image 
-              src="/logo.png" // Make sure your logo is named logo.png in the /public folder
+              src="/logo.jpeg" // Make sure your logo is named logo.png in the /public folder
               alt="NexusXtream Logo"
               width={100}
               height={100}
