@@ -8,7 +8,6 @@ import Pricing from './components/Pricing';
 import Features from './components/Features';
 import FAQ from './components/FAQ';
 import ServerNetwork from './components/ServerNetwork';
-import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import FloatingCTA from './components/FloatingCTA';
 
@@ -29,7 +28,6 @@ export default function Home() {
           <ServerNetwork />
           <FAQ />
         </main>
-        <Footer />
         <FloatingCTA />
       </div>
   );
