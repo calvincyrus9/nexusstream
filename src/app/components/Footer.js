@@ -11,11 +11,17 @@ const Footer = () => {
                 {/* --- THIS IS THE UPDATED LOGO --- */}
                 {/* 2. Replace the div with this Image component */}
                 <Image
-                    src="/logo.jpeg" // Use the same logo file
-                    alt="NexusXtream Logo"
-                    width={100}
-                    height={100}
-                />
+                      src="/logo.png"
+                      alt="NexusXtream Logo"
+                      width={150}
+                      height={150}
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        objectFit: "contain",
+                      }}
+                      priority
+                    />
                 {/* -------------------------------- */}
             </div>
             <p className="text-slate-400 pr-4">

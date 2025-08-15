@@ -39,12 +39,18 @@ const Header = () => {
           <Link href="/" className="flex items-center space-x-3 z-50">
             {/* --- THIS IS THE UPDATED LOGO --- */}
             {/* 2. Replace the div with this Image component */}
-            <Image 
-              src="/logo.jpeg" // Make sure your logo is named logo.png in the /public folder
-              alt="NexusXtream Logo"
-              width={100}
-              height={100}
-            />
+            <Image
+                    src="/logo.png"
+                    alt="NexusXtream Logo"
+                    width={150}
+                    height={150}
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                      objectFit: "contain",
+                    }}
+                    priority
+                  />
             {/* -------------------------------- */}
           
           </Link>
