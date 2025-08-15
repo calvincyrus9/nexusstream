@@ -7,7 +7,25 @@ import FAQ from '../components/FAQ';
 import TutorialsContent from '../components/TutorialsContent';
 import { motion } from 'framer-motion';
 import { SparklesIcon, CheckBadgeIcon } from '@heroicons/react/24/solid';
-import { NextSeo } from 'next-seo';
+import SEO from '../../../next-seo.config';
+
+export async function generateMetadata() {
+  const title = "Free IPTV Trial";
+  const description = "Sign up for a free trial of NexusXtream and experience our high-quality IPTV service.";
+  const url = "/trial";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...SEO.openGraph,
+      title: `${title} | NexusXtream`,
+      description,
+      url,
+    },
+  };
+}
 
 const TrialPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,16 +62,7 @@ const TrialPage = () => {
 
   return (
      <>
-      <NextSeo
-        title="Free IPTV Trial"
-        description="Sign up for a free trial of NexusXtream and experience our high-quality IPTV service."
-        canonical="https://nexusxtream.com/trial"
-        openGraph={{
-          url: 'https://nexusxtream.com/trial',
-          title: 'Free IPTV Trial | NexusXtream',
-          description: 'Sign up for a free trial of NexusXtream and experience our high-quality IPTV service.',
-        }}
-      />
+     
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
       <Header />
       <main className="pt-32 pb-20">

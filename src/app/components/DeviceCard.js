@@ -91,7 +91,7 @@ const DeviceCard = ({ device }) => {
   return (
     <Card>
       <LogoWrapper>
-        <img src={device.logo} alt={`${device.name} logo`} />
+        <Image src={device.logo} alt={`${device.name} logo`} width={100} height={48} className="h-12 w-auto mx-auto" />
       </LogoWrapper>
       <Title>{device.name}</Title>
       <Description>{device.description}</Description>

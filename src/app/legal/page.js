@@ -3,7 +3,25 @@ import React from 'react';
 import { ShieldCheckIcon, DocumentTextIcon, ExclamationTriangleIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
 import Header from '../components/Header'; // Re-using your existing header
 import Footer from '../components/Footer'; // Re-using your existing footer
-import { NextSeo } from 'next-seo';
+import SEO from '../../../next-seo.config';
+
+export async function generateMetadata() {
+  const title = "Legal Information";
+  const description = "Terms of Service, Privacy Policy, and other legal information for NexusXtream.";
+  const url = "/legal";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...SEO.openGraph,
+      title: `${title} | NexusXtream`,
+      description,
+      url,
+    },
+  };
+}
 
 // This is a reusable component for each section of the legal page
 const PolicySection = ({ id, title, subtitle, icon, children }) => (
@@ -26,16 +44,7 @@ const PolicySection = ({ id, title, subtitle, icon, children }) => (
 const LegalPage = () => {
   return (
      <>
-      <NextSeo
-        title="Legal Information"
-        description="Terms of Service, Privacy Policy, and other legal information for NexusXtream."
-        canonical="https://nexusxtream.com/legal"
-        openGraph={{
-          url: 'https://nexusxtream.com/legal',
-          title: 'Legal Information | NexusXtream',
-          description: 'Terms of Service, Privacy Policy, and other legal information for NexusXtream.',
-        }}
-      />
+     
     <div className="bg-slate-900 min-h-screen text-white">
       <Header />
       <main className="pt-32 pb-20">

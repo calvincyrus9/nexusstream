@@ -6,7 +6,27 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
-import { NextSeo } from 'next-seo';
+
+import SEO from '../../../next-seo.config';
+
+
+export async function generateMetadata() {
+  const title = "Renew IPTV Subscription";
+  const description = "Renew your IPTV plan with NexusXtream quickly and securely.";
+  const url = "/renew";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...SEO.openGraph,
+      title: `${title} | NexusXtream`,
+      description,
+      url,
+    },
+  };
+}
 
 
 const RenewalForm = () => {
@@ -134,16 +154,7 @@ const RenewalForm = () => {
 const RenewalPage = () => {
   return (
         <>
-      <NextSeo
-        title="Renew IPTV Subscription"
-        description="Renew your IPTV plan with NexusXtream quickly and securely."
-        canonical="https://nexusxtream.com/renew"
-        openGraph={{
-          url: 'https://nexusxtream.com/renew',
-          title: 'Renew IPTV Subscription | NexusXtream',
-          description: 'Renew your IPTV plan with NexusXtream quickly and securely.',
-        }}
-      />
+    
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
       <Header />
       <main className="pt-32 pb-20">

@@ -5,7 +5,25 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { GlobeAltIcon, HeartIcon, BoltIcon, UserGroupIcon } from '@heroicons/react/24/outline';
-import { NextSeo } from 'next-seo';
+import SEO from '../../../next-seo.config';
+
+export async function generateMetadata() {
+  const title = "About Us";
+  const description = "Learn more about NexusXtream, our mission, and our commitment to providing the best IPTV service.";
+  const url = "/about";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...SEO.openGraph,
+      title: `${title} | NexusXtream`,
+      description,
+      url,
+    },
+  };
+}
 
 // A reusable card component for highlighting company values
 const ValueCard = ({ icon, title, children }) => (
@@ -21,16 +39,7 @@ const ValueCard = ({ icon, title, children }) => (
 const AboutPage = () => {
   return (
     <>
-      <NextSeo
-        title="About Us"
-        description="Learn more about NexusXtream, our mission, and our commitment to providing the best IPTV service."
-        canonical="https://nexusxtream.com/about"
-        openGraph={{
-          url: 'https://nexusxtream.com/about',
-          title: 'About Us | NexusXtream',
-          description: 'Learn more about NexusXtream, our mission, and our commitment to providing the best IPTV service.',
-        }}
-      />
+   
     <div className="bg-slate-900 min-h-screen text-white overflow-x-hidden">
       <Header />
       <main className="pt-24 pb-20">

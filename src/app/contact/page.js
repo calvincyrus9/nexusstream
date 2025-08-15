@@ -5,8 +5,25 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { EnvelopeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
-import { NextSeo } from 'next-seo';
+import SEO from '../../../next-seo.config';
 
+export async function generateMetadata() {
+  const title = "Contact Us";
+  const description = "Get in touch with NexusXtream support for any IPTV-related questions or issues.";
+  const url = "/contact";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      ...SEO.openGraph,
+      title: `${title} | NexusXtream`,
+      description,
+      url,
+    },
+  };
+}
 
 const ContactMethod = ({ icon, title, children }) => (
   <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
@@ -57,16 +74,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <NextSeo
-        title="Contact Us"
-        description="Get in touch with NexusXtream support for any IPTV-related questions or issues."
-        canonical="https://nexusxtream.com/contact"
-        openGraph={{
-          url: 'https://nexusxtream.com/contact',
-          title: 'Contact Us | NexusXtream',
-          description: 'Get in touch with NexusXtream support for any IPTV-related questions or issues.',
-        }}
-      />
+      
     <div className="bg-slate-900 min-h-screen text-white">
       <Header />
       <main className="pt-32 pb-20">
