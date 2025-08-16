@@ -107,14 +107,15 @@ const ServerNetwork = () => {
                       zIndex: activeCountry === index ? 10 : 0
                     }}
                   >
-                    <div 
-                      className="rounded-full flex items-center justify-center bg-slate-900/80 backdrop-blur-sm border border-blue-500/50 transition-all duration-300"
-                      style={{
-                        width: 'clamp(32px, 3.5vw, 48px)',
-                        height: 'clamp(32px, 3.5vw, 48px)',
-                        boxShadow: activeCountry === index ? '0 0 15px rgba(59, 130, 246, 0.4)' : 'none',
-                      }}
-                    >
+                    <div  className="rounded-full flex items-center justify-center bg-slate-900/80 backdrop-blur-sm border border-[#50e3c2]/50"
+  style={{
+    width: 'clamp(32px, 3.5vw, 48px)',
+    height: 'clamp(32px, 3.5vw, 48px)',
+    boxShadow: activeCountry === index 
+      ? '0 0 15px rgba(80, 227, 194, 0.4)' // converted hex to rgba
+      : 'none',
+  }}
+>
                       <img
                         src={`https://flagcdn.com/24x18/${country.code}.png`}
                         alt={country.name}
