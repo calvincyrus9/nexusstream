@@ -60,9 +60,9 @@ const Pricing = () => {
 
   const plans = [
     { duration: "1 Month", basePrice: 14.99, popular: false },
-    { duration: "3 Months", basePrice: 37.99, popular: false },
-    { duration: "6 Months", basePrice: 59.99, popular: true },
-    { duration: "1 Year", basePrice: 89.99, popular: false },
+    { duration: "3 Months", basePrice: 35.99, popular: false },
+    { duration: "6 Months", basePrice: 62.99, popular: true },
+    { duration: "1 Year", basePrice: 91.99, popular: false },
   ];
 
   const handleDeviceChange = (devices) => {
