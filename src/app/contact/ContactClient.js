@@ -28,6 +28,7 @@ const ContactClient = () => {
 
     const formData = {
       formType: 'Contact Inquiry',
+      website: 'NX', 
       name: e.target.name.value,
       email: e.target.email.value,
       message: e.target.message.value,

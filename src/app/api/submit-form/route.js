@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 import { GoogleAuth } from 'google-auth-library';
 import { google } from 'googleapis';
 
-async function writeToSheet(formType, data) {
+async function writeToSheet(formType, website, data) {
   const auth = new GoogleAuth({
     credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS),
     scopes: 'https://www.googleapis.com/auth/spreadsheets',
@@ -16,26 +16,26 @@ async function writeToSheet(formType, data) {
   let rowData;
 
   // Prepare the row data, now including IP and User Agent
-  if (formType === 'Trial Request') {
-    sheetName = 'NX-Trials';
-    rowData = [ 
-      new Date().toISOString(), data.email, data.device, data.country, 
-      data.language, data.adultContent, data.ipAddress, data.userAgent 
+  if (formType.endsWith('Trial Request')) {
+    sheetName = 'Trials';
+    rowData = [
+      new Date().toISOString(), formType, website, data.email, data.device, data.country,
+      data.language, data.adultContent, data.ipAddress, data.userAgent
     ];
-  } else if (formType === 'Renewal Request') {
-    sheetName = 'NX-Renewals';
-    rowData = [ 
-      new Date().toISOString(), data.email, data.username, data.duration, 
-      data.devices, data.paymentMethod, data.country, data.ipAddress, data.userAgent 
+  } else if (formType.endsWith('Renewal Request')) {
+    sheetName = 'Renewals';
+    rowData = [
+      new Date().toISOString(), formType, website, data.email, data.username, data.duration,
+      data.devices, data.paymentMethod, data.country, data.ipAddress, data.userAgent
     ];
   } else if (formType === 'Contact Inquiry') {
-    sheetName = 'NX-Contacts';
-    rowData = [ 
-      new Date().toISOString(), data.name, data.email, data.message, 
-      data.ipAddress, data.userAgent 
+    sheetName = 'Contacts';
+    rowData = [
+      new Date().toISOString(), formType, website, data.name, data.email, data.message,
+      data.ipAddress, data.userAgent
     ];
   } else {
-    return; 
+    return;
   }
 
   await sheets.spreadsheets.values.append({
@@ -55,7 +55,7 @@ export async function POST(request) {
     const userAgent = request.headers.get('user-agent') || 'Not available';
 
     const formData = await request.json();
-    const { formType, ...data } = formData;
+    const { formType, website, ...data } = formData;
 
     // Add the new info to the data object that gets sent
     const enhancedData = {
@@ -78,9 +78,9 @@ export async function POST(request) {
     const mailOptions = {
       from: `"NexusStream Website" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      subject: `New Submission: ${formType}`,
+      subject: `New Submission: ${formType} from ${website}`,
       html: `<div style="font-family: sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-               <h2 style="color: #3b82f6;">New ${formType} Submission</h2>
+               <h2 style="color: #3b82f6;">New ${formType} Submission from ${website}</h2>
                <table style="width: 100%; border-collapse: collapse;">
                  <tbody>
                    ${Object.entries(enhancedData).map(([key, value]) => `
@@ -96,7 +96,7 @@ export async function POST(request) {
     await transporter.sendMail(mailOptions);
 
     // --- Write to Google Sheet with the enhanced data ---
-    await writeToSheet(formType, enhancedData);
+    await writeToSheet(formType, website, enhancedData);
 
     return NextResponse.json({ message: 'Submission successful!' }, { status: 200 });
 
