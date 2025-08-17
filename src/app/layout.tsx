@@ -3,7 +3,6 @@ import Script from 'next/script';
 import SEO from '../../next-seo.config'; // Adjust path if necessary
 import Header from './components/Header';
 import Footer from './components/Footer';
-import FloatingCTA from './components/FloatingCTA';
 import './globals.css'; // Assuming you have global styles
 import { ReactNode } from 'react';
 
@@ -36,7 +35,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           async 
         />
           <Footer />
-          <FloatingCTA />
         </div>
       </body>
     </html>
