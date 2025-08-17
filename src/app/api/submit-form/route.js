@@ -76,9 +76,9 @@ export async function POST(request) {
     });
 
     const mailOptions = {
-      from: `"NexusStream Website" <${process.env.EMAIL_USER}>`,
+      from: `"NexusStream" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      subject: `New Submission: ${formType} from ${website}`,
+      subject: `NX: ${formType} from ${website}`,
       html: `<div style="font-family: sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
                <h2 style="color: #3b82f6;">New ${formType} Submission from ${website}</h2>
                <table style="width: 100%; border-collapse: collapse;">
