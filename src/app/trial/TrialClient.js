@@ -16,7 +16,7 @@ const TrialClient = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     const formData = {
-      formType: 'ZP Trial Request',
+      formType: 'Trial Request',
       website: 'NX', 
       email: e.target.email.value,
       device: e.target.device.value,

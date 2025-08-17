@@ -29,7 +29,7 @@ const RenewalForm = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     const formData = {
-      formType: 'ZP Renewal Request',
+      formType: 'Renewal Request',
       website: 'NX', 
       email: e.target.email.value,
       username: e.target.username.value,
