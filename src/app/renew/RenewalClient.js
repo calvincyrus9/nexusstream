@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion } from './ClientMotionWrapper';
 import { ShieldCheckIcon } from '@heroicons/react/24/solid';
 
 // This is the actual client component with the form logic.
