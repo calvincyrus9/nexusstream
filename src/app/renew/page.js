@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from './ClientMotionWrapper';
 import RenewalClient from './RenewalClient'; // Import the client component
 
 // A component to render inside Suspense while the page loads
