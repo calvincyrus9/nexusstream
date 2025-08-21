@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { DevicePhoneMobileIcon, TvIcon, ComputerDesktopIcon, CubeIcon } from '@heroicons/react/24/outline';
-
+import Link from 'next/link';
 const tutorialsData = {
   "Smart TVs": [
     { 
@@ -251,12 +251,9 @@ const TutorialsContent = () => {
               >
                 Contact Support
               </a>
-              <a
-                href="/faq"
-                className="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium border border-slate-700 transition-all hover:border-blue-500/30"
+              <li><Link href="/#faq" className="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium border border-slate-700 transition-all hover:border-blue-500/30"
               >
-                View FAQs
-              </a>
+                View FAQs</Link></li>
             </div>
           </div>
         </motion.div>

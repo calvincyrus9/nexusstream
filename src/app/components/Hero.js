@@ -176,7 +176,7 @@ const Hero = () => {
               className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <PlayIcon className="w-5 h-5" /> Watch Demo
+                <PlayIcon className="w-5 h-5" /> Renew Subscription
               </span>
               <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>

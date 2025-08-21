@@ -27,9 +27,6 @@ const Footer = () => {
             <p className="text-slate-400 pr-4">
               Premium IPTV service delivering global content with exceptional quality and reliability.
             </p>
-            <div className="pt-8 border-t border-slate-800 text-center">
-          <p className="text-slate-500">© 2025 NexusXtream. All rights reserved.</p>
-        </div>
           </div>
           
           <div>
@@ -60,7 +57,9 @@ const Footer = () => {
           </div>
         </div>
         
-        
+        <div className="pt-8 border-t border-slate-800 text-center">
+          <p className="text-slate-500">© 2025 NexusXtream. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
