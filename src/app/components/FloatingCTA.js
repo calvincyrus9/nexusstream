@@ -35,15 +35,15 @@ const FloatingCTA = () => {
         >
           <div className="flex items-center justify-between p-3 sm:p-4 bg-slate-800/80 backdrop-blur-lg border border-slate-700 rounded-2xl shadow-2xl shadow-blue-900/50">
             <div className="flex-grow text-left">
-              <h3 className="font-bold text-white text-sm sm:text-base md:text-xl">Ready for Uninterrupted Streaming?</h3>
-              <p className="text-slate-300 text-xs sm:text-sm md:text-base hidden sm:block">Get instant access to thousands of channels.</p>
+              <h3 className="font-bold text-white text-sm sm:text-base md:text-xl">Ready to Start Streaming?</h3>
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base hidden sm:block">Join thousands of satisfied customers enjoying premium content on their terms.</p>
             </div>
             <a
               href="/trial"
               className="flex-shrink-0 ml-3 sm:ml-4 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
             >
               <PlayIcon className="w-5 h-5" />
-              <span className="text-sm sm:text-base">Clainm 24-H Trial</span>
+              <span className="text-sm sm:text-base">Claim 24H Trial</span>
             </a>
           </div>
         </motion.div>

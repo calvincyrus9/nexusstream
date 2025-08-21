@@ -53,11 +53,6 @@ const Step = ({ icon, title, description, isLast, index }) => {
               </div>
             </div>
           </motion.div>
-          
-          {/* Step number indicator */}
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm border-2 border-slate-900">
-            {index + 1}
-          </div>
         </div>
       </div>
       
@@ -77,6 +72,7 @@ const Step = ({ icon, title, description, isLast, index }) => {
     </motion.div>
   );
 };
+
 
 const Steps = () => {
   const stepsData = [
@@ -194,36 +190,6 @@ const Steps = () => {
             </motion.div>
           ))}
         </div>
-        
-        {/* CTA Section */}
-        <motion.div 
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/80 backdrop-blur-lg p-8 rounded-2xl border border-slate-700/50 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Streaming?</h3>
-            <p className="text-slate-300 mb-6">
-              Join thousands of satisfied customers enjoying premium content on their terms.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="/trial"
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
-              >
-                Start Free Trial
-              </a>
-              <a
-                href="/contact"
-                className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-lg border border-slate-700 transition-all hover:border-blue-500/30"
-              >
-                Contact Support
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
