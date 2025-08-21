@@ -22,8 +22,8 @@ const Hero = () => {
       }, 50);
     };
 
-    animateValue(setUsers, 60000, 2000);
-    animateValue(setRating, 49, 2000);
+    animateValue(setUsers, 34000, 2000);
+    animateValue(setRating, 44, 2000);
     animateValue(setCountries, 120, 2000);
     animateValue(setSupport, 24, 2000);
   }, []);
