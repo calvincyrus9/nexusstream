@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
-import { DevicePhoneMobileIcon, TvIcon, ComputerDesktopIcon, GamepadIcon } from '@heroicons/react/24/outline';
+import { DevicePhoneMobileIcon, TvIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -31,13 +31,13 @@ const DeviceCompatibility = () => {
     ? devices 
     : devices.filter(device => device.category === activeCategory);
 
-  // Categories for filtering
+  // Categories for filtering - replaced GamepadIcon with TvIcon
   const categories = [
     { id: 'all', name: 'All Devices', icon: DevicePhoneMobileIcon },
     { id: 'mobile', name: 'Mobile', icon: DevicePhoneMobileIcon },
     { id: 'tv', name: 'TV', icon: TvIcon },
     { id: 'computer', name: 'Computer', icon: ComputerDesktopIcon },
-    { id: 'gaming', name: 'Gaming', icon: GamepadIcon },
+    { id: 'gaming', name: 'Gaming', icon: TvIcon }, // Using TvIcon instead of GamepadIcon
   ];
 
   return (
@@ -233,7 +233,7 @@ const DeviceCard = ({ device, index }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
-      className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition-all duration-300 h-52 group"
+      className="flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition-all duration-300 h-52 group relative"
     >
       {/* Device Icon container with glow effect on hover */}
       <div className="w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center mb-4 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/20 group-hover:scale-110">
