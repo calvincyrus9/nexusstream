@@ -1,12 +1,44 @@
 'use client';
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
+import {
+  UserGroupIcon,
+  StarIcon,
+  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
+  PlayIcon,
+  DevicePhoneMobileIcon,
+  ArrowsPointingOutIcon,
+  ShieldCheckIcon
+} from "@heroicons/react/24/outline";
 
 const Hero = () => {
   const [users, setUsers] = useState(0);
   const [rating, setRating] = useState(0);
   const [countries, setCountries] = useState(0);
   const [support, setSupport] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(0);
+  const heroRef = useRef(null);
+
+  // Features for the carousel
+  const features = [
+    {
+      title: "4K Ultra HD",
+      description: "Crystal clear picture quality with HDR support",
+      icon: ArrowsPointingOutIcon
+    },
+    {
+      title: "Multi-Device",
+      description: "Stream on TV, mobile, desktop and tablet",
+      icon: DevicePhoneMobileIcon
+    },
+    {
+      title: "Secure Streaming",
+      description: "Bank-level encryption for your privacy",
+      icon: ShieldCheckIcon
+    }
+  ];
 
   useEffect(() => {
     const animateValue = (setter, end, duration) => {
@@ -21,38 +53,60 @@ const Hero = () => {
         setter(Math.floor(start));
       }, 50);
     };
-
-    animateValue(setUsers, 34000, 2000);
-    animateValue(setRating, 44, 2000);
+    
+    animateValue(setUsers, 60000, 2000);
+    animateValue(setRating, 49, 2000);
     animateValue(setCountries, 120, 2000);
     animateValue(setSupport, 24, 2000);
+
+    // Auto-rotate features
+    const featureInterval = setInterval(() => {
+      setActiveFeature(prev => (prev + 1) % features.length);
+    }, 5000);
+
+    return () => clearInterval(featureInterval);
+  }, []);
+
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const scrollY = window.scrollY;
+      heroRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section
       id="home"
+      ref={heroRef}
       className="relative overflow-hidden w-full flex items-center justify-center min-h-screen pt-16 sm:pt-20"
     >
-      {/* Background Gradient + SVG Grid */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/98 via-gray-900/95 to-gray-900/98"></div>
+        
+        {/* Animated Grid Pattern */}
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0zM4 0h2v100H4zM8 0h2v100H8zM12 0h2v100h-2zM16 0h2v100h-2zM20 0h2v100h-2zM24 0h2v100h-2zM28 0h2v100h-2zM32 0h2v100h-2zM36 0h2v100h-2zM40 0h2v100h-2zM44 0h2v100h-2zM48 0h2v100h-2zM52 0h2v100h-2zM56 0h2v100h-2zM60 0h2v100h-2zM64 0h2v100h-2zM68 0h2v100h-2zM72 0h2v100h-2zM76 0h2v100h-2zM80 0h2v100h-2zM84 0h2v100h-2zM88 0h2v100h-2zM92 0h2v100h-2zM96 0h2v100h-2zM0 0v2h100V0zM0 4v2h100V4zM0 8v2h100V8zM0 12v2h100v-2zM0 16v2h100v-2zM0 20v2h100v-2zM0 24v2h100v-2zM0 28v2h100v-2zM0 32v2h100v-2zM0 36v2h100v-2zM0 40v2h100v-2zM0 44v2h100v-2zM0 48v2h100v-2zM0 52v2h100v-2zM0 56v2h100v-2zM0 60v2h100v-2zM0 64v2h100v-2zM0 68v2h100v-2zM0 72v2h100v-2zM0 76v2h100v-2zM0 80v2h100v-2zM0 84v2h100v-2zM0 88v2h100v-2zM0 92v2h100v-2zM0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0zM4 0h2v100H4zM8 0h2v100H8zM12 0h2v100h-2zM16 0h2v100h-2zM20 0h2v100h-2zM24 0h2v100h-2zM28 0h2v100H8zM32 0h2v100h-2zM36 0h2v100h-2zM40 0h2v100h-2zM44 0h2v100h-2zM48 0h2v100h-2zM52 0h2v100h-2zM56 0h2v100h-2zM60 0h2v100h-2zM64 0h2v100h-2zM68 0h2v100h-2zM72 0h2v100h-2zM76 0h2v100h-2zM80 0h2v100h-2zM84 0h2v100h-2zM88 0h2v100h-2zM92 0h2v100h-2zM96 0h2v100h-2zM0 0v2h100V0zM0 4v2h100V4zM0 8v2h100V8zM0 12v2h100v-2zM0 16v2h100v-2zM0 20v2h100v-2zM0 24v2h100v-2zM0 28v2h100v-2zM0 32v2h100v-2zM0 36v2h100v-2zM0 40v2h100v-2zM0 44v2h100v-2zM0 48v2h100v-2zM0 52v2h100v-2zM0 56v2h100v-2zM0 60v2h100v-2zM0 64v2h100v-2zM0 68v2h100v-2zM0 72v2h100v-2zM0 76v2h100v-2zM0 80v2h100v-2zM0 84v2h100v-2zM0 88v2h100v-2zM0 92v2h100v-2zM0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E")`,
             backgroundSize: "100px 100px",
           }}
         ></div>
-
-        {/* Smooth blob animations */}
+        
+        {/* Animated Blobs */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-[40%] aspect-square rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 animate-blob blur-3xl animate-slow"></div>
-          <div className="absolute top-1/2 right-1/4 w-[35%] aspect-square rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-blob blur-3xl animate-slow delay-2s"></div>
-          <div className="absolute top-1/3 left-[15%] w-[15%] aspect-square rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 animate-blob blur-2xl animate-slow delay-4s"></div>
+          <div className="absolute top-1/4 left-1/4 w-[40%] aspect-square rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 animate-blob blur-3xl"></div>
+          <div className="absolute top-1/2 right-1/4 w-[35%] aspect-square rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-blob blur-3xl animation-delay-2000"></div>
+          <div className="absolute top-1/3 left-[15%] w-[15%] aspect-square rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 animate-blob blur-2xl animation-delay-4000"></div>
         </div>
-
-        {/* Particles */}
-        {Array.from({ length: 20 }).map((_, i) => (
+        
+        {/* Floating Particles */}
+        {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-cyan-400/30 animate-particle"
@@ -67,65 +121,199 @@ const Hero = () => {
           ></div>
         ))}
       </div>
-
-      {/* Main content */}
+      
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+        <div className="w-8 h-12 rounded-full border-2 border-cyan-400/50 flex justify-center p-1">
+          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-scroll"></div>
+        </div>
+      </div>
+      
+      {/* Main Content */}
       <div className="container mx-auto relative z-10 flex flex-col items-center justify-center py-32 px-4">
-        <div className="max-w-3xl text-center">
-          <div className="mb-8">
-            <div className="inline-block px-5 py-2.5 bg-cyan-900/30 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
-              <span className="text-cyan-400 font-medium tracking-wider text-sm">
+        <div className="max-w-4xl text-center">
+          {/* Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <div className="inline-block px-5 py-2.5 bg-gray-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
+              <span className="text-cyan-400 font-medium tracking-wider text-sm flex items-center gap-2">
+                <span className="flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+                </span>
                 PREMIUM STREAMING SERVICE
               </span>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                Stream Anything, Anytime, Anywhere
-              </span>
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-              Watch live sports, premium channels, and 4K movies with zero buffering. Enjoy seamless streaming on TV, mobile, and desktop.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/trial"
-                className="group bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 relative overflow-hidden"
-              >
+          </motion.div>
+          
+          {/* Headline */}
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+              Stream Anything,
+            </span>
+            <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              Anytime, Anywhere
+            </span>
+          </motion.h1>
+          
+          {/* Description */}
+          <motion.p 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
+          >
+            Watch live sports, premium channels, and 4K movies with zero buffering.
+            Enjoy seamless streaming on all your devices.
+          </motion.p>
+          
+          {/* CTA Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-4 mb-16"
+          >
+            <a
+              href="/trial"
+              className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-2">
                 🎬 Start Free Trial
-                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
-              </a>
-
-              <a
-                href="/renew"
-                className="group bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 relative overflow-hidden"
-              >
-                🔄 Renew Subscription
-                <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
-              </a>
-            </div>
-          </div>
-
-          {/* Stats with hover animation */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            {[
-              { value: `${users.toLocaleString()}+`, label: "Happy Users" },
-              { value: `${(rating / 10).toFixed(1)}/5`, label: "Star Rating" },
-              { value: `${countries}+`, label: "Countries Served" },
-              { value: `${support}/7`, label: "Live Support" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all transform hover:-translate-y-2 hover:scale-105"
-              >
-                <div className="text-3xl font-bold text-cyan-400">{stat.value}</div>
-                <div className="text-gray-400">{stat.label}</div>
+              </span>
+              <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
+            </a>
+            <a
+              href="/demo"
+              className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <PlayIcon className="w-5 h-5" /> Watch Demo
+              </span>
+              <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
+            </a>
+          </motion.div>
+          
+          {/* Features Carousel */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mb-16 max-w-2xl mx-auto"
+          >
+            <div className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-700">
+              <div className="flex justify-center mb-4">
+                {features.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveFeature(index)}
+                    className={`w-2 h-2 rounded-full mx-1 ${activeFeature === index ? 'bg-cyan-400' : 'bg-gray-600'}`}
+                    aria-label={`View feature ${index + 1}`}
+                  />
+                ))}
               </div>
-            ))}
-          </div>
+              
+              <div className="flex flex-col items-center">
+                {features.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: activeFeature === index ? 1 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className={`${activeFeature === index ? 'block' : 'hidden'} text-center`}
+                    >
+                      <Icon className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                      <p className="text-gray-400">{feature.description}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Stats with Icons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
+          >
+            {[
+              { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
+              { value: `${(rating / 10).toFixed(1)}/5`, label: "Star Rating", icon: StarIcon },
+              { value: `${countries}+`, label: "Countries Served", icon: GlobeAltIcon },
+              { value: `${support}/7`, label: "Live Support", icon: ChatBubbleLeftRightIcon },
+            ].map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all flex items-center gap-3"
+                >
+                  <Icon className="w-8 h-8 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <div className="text-3xl font-bold text-cyan-400">{stat.value}</div>
+                    <div className="text-gray-400">{stat.label}</div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
+      
+      {/* Custom styles for animations */}
+      <style jsx global>{`
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+        
+        @keyframes particle {
+          0% { transform: translateY(0) translateX(0); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+        }
+        .animate-particle {
+          animation: particle linear infinite;
+        }
+        
+        @keyframes scroll {
+          0% { transform: translateY(0); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(10px); opacity: 0; }
+        }
+        .animate-scroll {
+          animation: scroll 1.5s infinite;
+        }
+      `}</style>
     </section>
   );
 };
