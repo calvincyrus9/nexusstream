@@ -17,11 +17,9 @@ const Hero = () => {
   const [rating, setRating] = useState(0);
   const [countries, setCountries] = useState(0);
   const [support, setSupport] = useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const heroRef = useRef(null);
 
-  // Features for the carousel
   const features = [
     {
       title: "4K Ultra HD",
@@ -59,7 +57,6 @@ const Hero = () => {
     animateValue(setCountries, 120, 2000);
     animateValue(setSupport, 24, 2000);
 
-    // Auto-rotate features
     const featureInterval = setInterval(() => {
       setActiveFeature(prev => (prev + 1) % features.length);
     }, 5000);
@@ -67,23 +64,11 @@ const Hero = () => {
     return () => clearInterval(featureInterval);
   }, []);
 
-  // Parallax effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      const scrollY = window.scrollY;
-      heroRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section
       id="home"
       ref={heroRef}
-      className="relative overflow-hidden w-full flex items-center justify-center min-h-screen pt-16 sm:pt-20"
+      className="relative overflow-hidden w-full flex items-center justify-center min-h-[85vh] pt-16 sm:pt-20"
     >
       {/* Background */}
       <div className="absolute inset-0 z-0">
@@ -106,7 +91,7 @@ const Hero = () => {
         </div>
         
         {/* Floating Particles */}
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-cyan-400/30 animate-particle"
@@ -122,24 +107,17 @@ const Hero = () => {
         ))}
       </div>
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-8 h-12 rounded-full border-2 border-cyan-400/50 flex justify-center p-1">
-          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-scroll"></div>
-        </div>
-      </div>
-      
       {/* Main Content */}
-      <div className="container mx-auto relative z-10 flex flex-col items-center justify-center py-32 px-4">
+      <div className="container mx-auto relative z-10 flex flex-col items-center justify-center py-12 px-4">
         <div className="max-w-4xl text-center">
           {/* Badge */}
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-6"
           >
-            <div className="inline-block px-5 py-2.5 bg-gray-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30 mb-6">
+            <div className="inline-block px-5 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-cyan-500/30">
               <span className="text-cyan-400 font-medium tracking-wider text-sm flex items-center gap-2">
                 <span className="flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-cyan-400 opacity-75"></span>
@@ -155,7 +133,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
               Stream Anything,
@@ -171,7 +149,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
+            className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto"
           >
             Watch live sports, premium channels, and 4K movies with zero buffering.
             Enjoy seamless streaming on all your devices.
@@ -182,11 +160,11 @@ const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-4 mb-16"
+            className="flex flex-wrap justify-center gap-4 mb-10"
           >
             <a
               href="/trial"
-              className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 overflow-hidden"
+              className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
                 🎬 Start Free Trial
@@ -195,53 +173,13 @@ const Hero = () => {
             </a>
             <a
               href="/demo"
-              className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
+              className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <PlayIcon className="w-5 h-5" /> Watch Demo
               </span>
               <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
-          </motion.div>
-          
-          {/* Features Carousel */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mb-16 max-w-2xl mx-auto"
-          >
-            <div className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-700">
-              <div className="flex justify-center mb-4">
-                {features.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveFeature(index)}
-                    className={`w-2 h-2 rounded-full mx-1 ${activeFeature === index ? 'bg-cyan-400' : 'bg-gray-600'}`}
-                    aria-label={`View feature ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <div className="flex flex-col items-center">
-                {features.map((feature, index) => {
-                  const Icon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: activeFeature === index ? 1 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className={`${activeFeature === index ? 'block' : 'hidden'} text-center`}
-                    >
-                      <Icon className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-                      <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                      <p className="text-gray-400">{feature.description}</p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
           </motion.div>
           
           {/* Stats with Icons */}
@@ -254,20 +192,20 @@ const Hero = () => {
             {[
               { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
               { value: `${(rating / 10).toFixed(1)}/5`, label: "Star Rating", icon: StarIcon },
-              { value: `${countries}+`, label: "Countries Served", icon: GlobeAltIcon },
-              { value: `${support}/7`, label: "Live Support", icon: ChatBubbleLeftRightIcon },
+              { value: `${countries}+`, label: "Countries", icon: GlobeAltIcon },
+              { value: `${support}/7`, label: "Support", icon: ChatBubbleLeftRightIcon },
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <motion.div
                   key={i}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all flex items-center gap-3"
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className="bg-gray-800/30 backdrop-blur-sm p-3 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all flex items-center gap-2"
                 >
-                  <Icon className="w-8 h-8 text-cyan-400 flex-shrink-0" />
+                  <Icon className="w-6 h-6 text-cyan-400 flex-shrink-0" />
                   <div>
-                    <div className="text-3xl font-bold text-cyan-400">{stat.value}</div>
-                    <div className="text-gray-400">{stat.label}</div>
+                    <div className="text-2xl font-bold text-cyan-400">{stat.value}</div>
+                    <div className="text-xs text-gray-400">{stat.label}</div>
                   </div>
                 </motion.div>
               );
@@ -302,16 +240,6 @@ const Hero = () => {
         }
         .animate-particle {
           animation: particle linear infinite;
-        }
-        
-        @keyframes scroll {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(10px); opacity: 0; }
-        }
-        .animate-scroll {
-          animation: scroll 1.5s infinite;
         }
       `}</style>
     </section>
