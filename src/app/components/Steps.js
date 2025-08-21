@@ -1,5 +1,4 @@
 'use client';
-
 import { 
   ShieldCheckIcon, 
   DevicePhoneMobileIcon, 
@@ -9,7 +8,6 @@ import {
 import { motion } from 'framer-motion';
 
 const Step = ({ icon, title, description, isLast, index }) => {
-  // This component's code remains the same
   return (
     <motion.div 
       className="relative"
@@ -22,9 +20,14 @@ const Step = ({ icon, title, description, isLast, index }) => {
         ease: "easeOut"
       }}
     >
+      {/* Connecting line between steps */}
       {!isLast && (
         <motion.div 
           className="hidden md:block absolute top-12 left-3/4 w-1/2 h-0.5 bg-gradient-to-r from-slate-700 via-blue-500 to-slate-700 z-0"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.2 + 0.4 }}
         />
       )}
       
@@ -50,6 +53,11 @@ const Step = ({ icon, title, description, isLast, index }) => {
               </div>
             </div>
           </motion.div>
+          
+          {/* Step number indicator */}
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm border-2 border-slate-900">
+            {index + 1}
+          </div>
         </div>
       </div>
       
@@ -80,7 +88,7 @@ const Steps = () => {
     {
       icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
       title: "Choose Device/App",
-      description: "Sign up for our risk-free trial to test our premium service with no commitments."
+      description: "Select your preferred device or download our app from the app store for seamless streaming."
     },
     {
       icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
@@ -95,9 +103,48 @@ const Steps = () => {
   ];
 
   return (
-    // --- THE FIX: Added `relative` class to the section ---
     <section id="how-it-works" className="relative py-24 px-4 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-slate-900/95"></div>
+        
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0%M4 0h2v100H4%M8 0h2v100H8%M12 0h2v100h-2%M16 0h2v100h-2%M20 0h2v100h-2%M24 0h2v100h-2%M28 0h2v100H8%M32 0h2v100h-2%M36 0h2v100h-2%M40 0h2v100h-2%M44 0h2v100h-2%M48 0h2v100h-2%M52 0h2v100h-2%M56 0h2v100h-2%M60 0h2v100h-2%M64 0h2v100h-2%M68 0h2v100h-2%M72 0h2v100h-2%M76 0h2v100h-2%M80 0h2v100h-2%M84 0h2v100h-2%M88 0h2v100h-2%M92 0h2v100h-2%M96 0h2v100h-2%M0 0v2h100V0%M0 4v2h100V4%M0 8v2h100V8%M0 12v2h100v-2%M0 16v2h100v-2%M0 20v2h100v-2%M0 24v2h100v-2%M0 28v2h100v-2%M0 32v2h100v-2%M0 36v2h100v-2%M0 40v2h100v-2%M0 44v2h100v-2%M0 48v2h100v-2%M0 52v2h100v-2%M0 56v2h100v-2%M0 60v2h100v-2%M0 64v2h100v-2%M0 68v2h100v-2%M0 72v2h100v-2%M0 76v2h100v-2%M0 80v2h100v-2%M0 84v2h100v-2%M0 88v2h100v-2%M0 92v2h100v-2%M0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            backgroundSize: "100px 100px"
+          }}
+        ></div>
+        
+        {/* Animated Blobs */}
+        <motion.div 
+          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-blue-900/10 blur-3xl"
+          animate={{ 
+            x: [0, 20, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 -right-20 w-80 h-80 rounded-full bg-cyan-900/10 blur-3xl"
+          animate={{ 
+            x: [0, -30, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div 
           className="text-center mb-24"
           initial={{ opacity: 0, y: 20 }}
@@ -105,6 +152,12 @@ const Steps = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          <div className="inline-block px-5 py-2 bg-blue-900/30 backdrop-blur-sm rounded-full border border-blue-500/30 mb-6">
+            <span className="text-blue-400 font-medium tracking-wider text-sm">
+              HOW IT WORKS
+            </span>
+          </div>
+          
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Get Streaming in 4 Simple Steps
@@ -142,31 +195,35 @@ const Steps = () => {
           ))}
         </div>
         
-        {/* These animated background elements are now properly contained */}
+        {/* CTA Section */}
         <motion.div 
-          className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-blue-900/10 blur-3xl -z-10"
-          animate={{ 
-            x: [0, 20, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-1/3 -right-20 w-80 h-80 rounded-full bg-cyan-900/10 blur-3xl -z-10"
-          animate={{ 
-            x: [0, -30, 0],
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/80 backdrop-blur-lg p-8 rounded-2xl border border-slate-700/50 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Streaming?</h3>
+            <p className="text-slate-300 mb-6">
+              Join thousands of satisfied customers enjoying premium content on their terms.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="/trial"
+                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20"
+              >
+                Start Free Trial
+              </a>
+              <a
+                href="/contact"
+                className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-lg border border-slate-700 transition-all hover:border-blue-500/30"
+              >
+                Contact Support
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
