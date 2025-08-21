@@ -107,21 +107,31 @@ const Pricing = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {plans.map(plan => {
-            const undiscountedTotal = plan.basePrice * selectedDevices;
-            const finalPrice = selectedDevices > 1 ? undiscountedTotal * 0.8 : undiscountedTotal;
-            
-            return (
-              <PricingCard 
-                key={plan.duration}
-                duration={plan.duration} 
-                price={finalPrice} 
-                popular={plan.popular} 
-                devices={selectedDevices}
-              />
-            )
-          })}
-        </div>
+  {plans.map(plan => {
+    const months = plan.duration === "1 Month" ? 1 :
+                   plan.duration === "3 Months" ? 3 :
+                   plan.duration === "6 Months" ? 6 :
+                   12; // 1 Year
+
+    // Total price for all devices and months
+    const undiscountedTotal = plan.basePrice * months * selectedDevices;
+    const finalTotal = selectedDevices > 1 ? undiscountedTotal * 0.8 : undiscountedTotal;
+
+    // Price per month per account
+    const pricePerMonth = finalTotal / months;
+
+    return (
+      <PricingCard 
+        key={plan.duration}
+        duration={plan.duration} 
+        price={pricePerMonth}  // <-- now shows per month
+        popular={plan.popular} 
+        devices={selectedDevices}
+      />
+    )
+  })}
+</div>
+
         
         <div className="mt-16 text-center max-w-4xl mx-auto">
           <p className="text-slate-400">Secure checkout with PayPal, Credit Cards, and Bitcoin (10% discount for crypto payments)</p>
