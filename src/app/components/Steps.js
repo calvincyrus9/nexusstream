@@ -1,8 +1,8 @@
 'use client';
 import { 
-  ShieldCheckIcon, 
-  DevicePhoneMobileIcon, 
-  PlayIcon, 
+  PlayCircleIcon , 
+  KeyIcon , 
+  TvIcon , 
   ArrowPathIcon 
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
@@ -77,25 +77,27 @@ const Step = ({ icon, title, description, isLast, index }) => {
 const Steps = () => {
   const stepsData = [
     {
-      icon: <PlayIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
-      title: "Request Free Trial",
-      description: "Sign up for our risk-free trial to test our premium service with no commitments."
-    },
-    {
-      icon: <DevicePhoneMobileIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
-      title: "Request Free Trial",
-      description: "Sign up for our risk-free trial to test our premium service with no commitments."
-    },
-    {
-      icon: <ShieldCheckIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
-      title: "Activate & Watch",
-      description: "Follow our simple activation process and start streaming instantly with HD quality."
-    },
-    {
-      icon: <ArrowPathIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
-      title: "Renew Anytime",
-      description: "Flexible subscription options with easy renewal and cancellation at any time."
-    }
+  icon: <PlayCircleIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
+  title: "Start Free Trial",
+  description: "Request your free trial and unlock instant access."
+},
+{
+  icon: <KeyIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
+  title: "Get Login Details",
+  description: "Receive your Xtream login and choose your favorite app or device."
+},
+{
+  icon: <TvIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
+  title: "Login & Watch",
+  description: "Enter your details, activate, and enjoy nonstop HD streaming."
+},
+{
+  icon: <ArrowPathIcon className="w-8 h-8 text-blue-400 group-hover:text-cyan-300 transition-colors" />,
+  title: "Easy Renewal",
+  description: "Renew in seconds whenever you want. Total flexibility."
+}
+
+
   ];
 
   return (
