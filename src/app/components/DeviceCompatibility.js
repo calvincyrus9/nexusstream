@@ -13,7 +13,7 @@ const DeviceCompatibility = () => {
   
   // Mock device data with categories
   const devices = [
-    { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.svg', category: 'mobile' },
+    { name: 'Android', description: 'Phones & Tablets & TVs', logo: '/logos/android.png', category: 'mobile' },
     { name: 'Apple', description: 'iPhone & iPad & TVs', logo: '/logos/apple.png', category: 'mobile' },
     { name: 'Xbox', description: 'All models', logo: '/logos/xbox.svg', category: 'gaming' },
     { name: 'Windows', description: 'All models', logo: '/logos/windows.svg', category: 'computer' },
