@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center text-center text-white overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
       {/* Background Video with Fallback */}
       {!videoError ? (
         <video
@@ -33,18 +33,22 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          preload="auto" // Added to ensure video loads properly
-          className="absolute top-0 left-0 w-full h-full object-cover z-0" // Changed from -z-10 to z-0
+          preload="auto"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
           onLoadedData={() => setVideoLoaded(true)}
           onError={() => setVideoError(true)}
           style={{ 
-            // Added inline styles to ensure video covers entire section
+            // Added responsive styles
             position: 'absolute',
             top: '0',
             left: '0',
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            // Added transform for better mobile performance
+            transform: 'translateZ(0)',
+            // Added will-change for optimization
+            willChange: 'transform'
           }}
         >
           <source src={videoUrl} type="video/mp4" />
@@ -53,7 +57,7 @@ const HeroSection = () => {
       ) : (
         /* Fallback background image if video fails to load */
         <div
-          className="absolute top-0 left-0 w-full h-full object-cover z-0" // Changed from -z-10 to z-0
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
           style={{
             backgroundImage: `url('/logog.jpg')`,
             backgroundSize: "cover",
@@ -62,12 +66,12 @@ const HeroSection = () => {
         />
       )}
       
-      {/* Overlay - Changed z-index to be above video */}
-      <div className="absolute inset-0 bg-black/60 z-10"></div> {/* Changed from -z-10 to z-10 */}
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
       
       {/* Content */}
       <motion.div
-        className="px-4 z-20" // Changed from z-10 to z-20 to ensure it's above overlay
+        className="px-4 z-20 w-full max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -104,17 +108,40 @@ const HeroSection = () => {
       
       {/* Loading indicator */}
       {!videoLoaded && !videoError && (
-        <div className="absolute inset-0 flex items-center justify-center z-30"> {/* Changed from -z-10 to z-30 */}
+        <div className="absolute inset-0 flex items-center justify-center z-30">
           <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
       )}
       
       {/* Video error message */}
       {videoError && (
-        <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400 z-30"> {/* Changed from no z-index to z-30 */}
+        <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400 z-30">
           Video failed to load. Using fallback background.
         </div>
       )}
+      
+      {/* Custom styles for responsive video */}
+      <style jsx global>{`
+        /* Mobile-specific video adjustments */
+        @media (max-width: 768px) {
+          video {
+            /* Ensure video covers entire viewport on mobile */
+            min-height: 100vh;
+            /* Fix for iOS Safari viewport height issues */
+            height: -webkit-fill-available;
+          }
+        }
+        
+        /* Fix for mobile browsers that don't handle object-fit well */
+        @supports not (object-fit: cover) {
+          video {
+            width: auto;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+          }
+        }
+      `}</style>
     </section>
   );
 };
