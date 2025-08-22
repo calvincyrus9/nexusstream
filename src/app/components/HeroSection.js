@@ -55,7 +55,7 @@ const HeroSection = () => {
         <div
           className="absolute top-0 left-0 w-full h-full object-cover z-0" // Changed from -z-10 to z-0
           style={{
-            backgroundImage: `url('/hero-bg-fallback.jpg')`,
+            backgroundImage: `url('/logog.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
