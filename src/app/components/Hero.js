@@ -150,38 +150,48 @@ const Hero = () => {
           
           {/* Tagline Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-16"
-          >
-            <div className="space-y-2">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400"
-              >
-                Built To Be Fast.
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
-              >
-                Made To Be Trusted.
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
-              >
-                Designed To Be Simplified.
-              </motion.div>
-            </div>
-          </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 0.5 }}
+  className="mt-16"
+>
+  <motion.div
+    initial={{ rotateY: 0 }}
+    animate={{ rotateY: 360 }}
+    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+    className="perspective-1000"
+    style={{ perspective: "1000px" }}
+  >
+    <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/80 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 max-w-2xl mx-auto">
+      <div className="space-y-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400"
+        >
+          Built To Be Fast
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
+        >
+          Made To Be Trusted
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
+          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
+        >
+          Designed To Be Simplified
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+</motion.div>
         </div>
       </div>
       
