@@ -82,7 +82,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Time To ...
+          Reliable Streaming, Every Time.
         </motion.h3>
         
         <motion.h1
@@ -91,7 +91,8 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Time To ... <span className="text-blue-400">NexusXtream</span>
+          TimeEnjoy Seamless Entertainment with <span className="text-blue-400">NexusXtream</span>
+          HD quality, uninterrupted streaming, and 24/7 support. Join our community today!
         </motion.h1>
         
         <motion.button
@@ -102,7 +103,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          Free Trial
+          Start Free Trial
         </motion.button>
       </motion.div>
       
