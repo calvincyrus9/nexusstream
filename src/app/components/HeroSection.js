@@ -7,8 +7,7 @@ const HeroSection = () => {
   const [videoError, setVideoError] = useState(false);
 
   // Direct Google Drive link
-  const videoUrl =
-    "https://drive.google.com/uc?export=download&id=1oeQhQkXaBS_DI-fRv1ggMO1CETFW-LCr";
+  const videoUrl ="https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
 
   useEffect(() => {
     // Check if video exists
