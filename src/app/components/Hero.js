@@ -6,6 +6,7 @@ import {
   StarIcon,
   GlobeAltIcon,
   ChatBubbleLeftRightIcon,
+  ArrowPathIcon,
   PlayIcon,
   DevicePhoneMobileIcon,
   ArrowsPointingOutIcon,
@@ -167,7 +168,7 @@ const Hero = () => {
               className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                🎬 Start Free Trial
+                < PlayIcon className="w-5 h-5" /> Start Free Trial
               </span>
               <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
@@ -176,7 +177,7 @@ const Hero = () => {
               className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <PlayIcon className="w-5 h-5" /> Renew Subscription
+                <ArrowPathIcon className="w-5 h-5" /> Renew Subscription
               </span>
               <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
