@@ -57,11 +57,11 @@ const ServerNetwork = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-              Backed by next-gen servers worldwide 
+              Backed by next-gen servers worldwide Built for Speed Trusted to Perform.
             </span>
           </h2>
           <p className="text-xl text-slate-300">
-            we deliver seamless, high-quality streaming 24/7
+            we deliver seamless, high-quality streaming 24/7 
           </p>
         </div>
         
