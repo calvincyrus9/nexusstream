@@ -3,35 +3,49 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const videoUrl =
-    "https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
+
+  const videoUrl = "https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
+
+  useEffect(() => {
+    const video = document.createElement("video");
+    video.src = videoUrl;
+    video.onloadeddata = () => setVideoLoaded(true);
+    video.onerror = () => {
+      setVideoError(true);
+      console.error("Video failed to load");
+    };
+  }, []);
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
-      
-      {/* Video Wrapper */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {!videoError ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full absolute top-0 left-0 object-cover"
-            onError={() => setVideoError(true)}
-          >
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/logog.jpg')" }}
-          />
-        )}
-      </div>
+
+      {/* Background Video */}
+      {!videoError ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          onLoadedData={() => setVideoLoaded(true)}
+          onError={() => setVideoError(true)}
+        >
+          <source src={videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          style={{
+            backgroundImage: `url('/logog.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      )}
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-10"></div>
@@ -58,8 +72,7 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Enjoy Seamless Entertainment with{" "}
-          <span className="text-blue-400">NexusXtream</span>
+          Enjoy Seamless Entertainment with <span className="text-blue-400">NexusXtream</span>
         </motion.h1>
 
         <motion.button
@@ -74,20 +87,35 @@ const HeroSection = () => {
         </motion.button>
       </motion.div>
 
-      {/* Mobile CSS Fix */}
-      <style jsx global>{`
-        /* Force video to cover screen on mobile */
-        video {
-          min-width: 100%;
-          min-height: 100%;
-        }
+      {/* Loading Indicator */}
+      {!videoLoaded && !videoError && (
+        <div className="absolute inset-0 flex items-center justify-center z-30">
+          <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+        </div>
+      )}
 
+      {/* Video error message */}
+      {videoError && (
+        <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400 z-30">
+          Video failed to load. Using fallback background.
+        </div>
+      )}
+
+      {/* Mobile Responsive Fix */}
+      <style jsx global>{`
         @media (max-width: 768px) {
           video {
             height: 100vh;
-            width: 100vw;
+            min-height: 100%;
             object-fit: cover;
-            position: fixed; /* Keeps it stable when scrolling */
+          }
+        }
+
+        /* For browsers that do not fully support object-fit */
+        @supports not (object-fit: cover) {
+          video {
+            width: 100%;
+            height: 100%;
           }
         }
       `}</style>
