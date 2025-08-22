@@ -23,7 +23,7 @@ const DeviceCompatibility = () => {
     { name: 'XBMC', description: 'Media center', logo: '/logos/xbmc.png', category: 'computer' },
     { name: 'Nvidia', description: 'All models', logo: '/logos/nvidia.svg', category: 'computer' },
     { name: 'Samsung', description: 'Smart TV & Phones & Tablets', logo: '/logos/samsung.svg', category: 'tv' },
-    { name: 'PlayStation', description: 'PlayStation', logo: '/logos/PlayStation.svg', category: 'gaming' },
+    { name: 'PlayStation', description: 'PlayStation', logo: '/logos/PlayStation.png', category: 'gaming' },
   ];
 
   // Filter devices based on active category
