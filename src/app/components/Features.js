@@ -136,26 +136,7 @@ const Features = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/80 backdrop-blur-lg p-8 rounded-2xl border border-slate-700 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Experience Premium Streaming?</h3>
-            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-              Join thousands of satisfied customers enjoying our premium features. Start your free trial today and see the difference for yourself.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="/trial"
-                className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20"
-              >
-                Start Free Trial
-              </a>
-              <a
-                href="/contact"
-                className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-lg border border-slate-700 transition-all hover:border-cyan-500/30"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
+          
         </motion.div>
       </div>
       
