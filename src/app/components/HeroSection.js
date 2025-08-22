@@ -5,19 +5,13 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  
-  // Direct Cloudinary link
+
   const videoUrl = "https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
-  
+
   useEffect(() => {
-    // Check if video exists
     const video = document.createElement("video");
     video.src = videoUrl;
-    
-    video.onloadeddata = () => {
-      setVideoLoaded(true);
-    };
-    
+    video.onloadeddata = () => setVideoLoaded(true);
     video.onerror = () => {
       setVideoError(true);
       console.error("Video failed to load");
@@ -26,7 +20,8 @@ const HeroSection = () => {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
-      {/* Background Video with Fallback */}
+
+      {/* Background Video */}
       {!videoError ? (
         <video
           autoPlay
@@ -37,25 +32,11 @@ const HeroSection = () => {
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
           onLoadedData={() => setVideoLoaded(true)}
           onError={() => setVideoError(true)}
-          style={{ 
-            // Added responsive styles
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            // Added transform for better mobile performance
-            transform: 'translateZ(0)',
-            // Added will-change for optimization
-            willChange: 'transform'
-          }}
         >
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
-        /* Fallback background image if video fails to load */
         <div
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
           style={{
@@ -65,10 +46,10 @@ const HeroSection = () => {
           }}
         />
       )}
-      
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-10"></div>
-      
+
       {/* Content */}
       <motion.div
         className="px-4 z-20 w-full max-w-4xl mx-auto"
@@ -84,17 +65,16 @@ const HeroSection = () => {
         >
           Reliable Streaming, Every Time.
         </motion.h3>
-        
+
         <motion.h1
           className="text-3xl md:text-5xl font-bold mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          TimeEnjoy Seamless Entertainment with <span className="text-blue-400">NexusXtream</span>
-          HD quality, uninterrupted streaming, and 24/7 support. Join our community today!
+          Enjoy Seamless Entertainment with <span className="text-blue-400">NexusXtream</span>
         </motion.h1>
-        
+
         <motion.button
           className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition transform hover:scale-105 shadow-lg shadow-blue-500/30"
           whileHover={{ scale: 1.05 }}
@@ -106,40 +86,36 @@ const HeroSection = () => {
           Start Free Trial
         </motion.button>
       </motion.div>
-      
-      {/* Loading indicator */}
+
+      {/* Loading Indicator */}
       {!videoLoaded && !videoError && (
         <div className="absolute inset-0 flex items-center justify-center z-30">
           <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
       )}
-      
+
       {/* Video error message */}
       {videoError && (
         <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400 z-30">
           Video failed to load. Using fallback background.
         </div>
       )}
-      
-      {/* Custom styles for responsive video */}
+
+      {/* Mobile Responsive Fix */}
       <style jsx global>{`
-        /* Mobile-specific video adjustments */
         @media (max-width: 768px) {
           video {
-            /* Ensure video covers entire viewport on mobile */
-            min-height: 100vh;
-            /* Fix for iOS Safari viewport height issues */
-            height: -webkit-fill-available;
+            height: 100vh;
+            min-height: 100%;
+            object-fit: cover;
           }
         }
-        
-        /* Fix for mobile browsers that don't handle object-fit well */
+
+        /* For browsers that do not fully support object-fit */
         @supports not (object-fit: cover) {
           video {
-            width: auto;
+            width: 100%;
             height: 100%;
-            min-width: 100%;
-            min-height: 100%;
           }
         }
       `}</style>
