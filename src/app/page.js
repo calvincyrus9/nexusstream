@@ -9,6 +9,7 @@ import FAQ from './components/FAQ';
 import ServerNetwork from './components/ServerNetwork';
 import Testimonials from './components/Testimonials';
 import FloatingCTA from './components/FloatingCTA';
+import HeroSection from './components/HeroSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <Testimonials />
           <Features />
           <ServerNetwork />
+          <HeroSection/>
           <FAQ />
         </main>
         <FloatingCTA />
