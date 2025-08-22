@@ -155,42 +155,50 @@ const Hero = () => {
   transition={{ duration: 0.5, delay: 0.5 }}
   className="mt-16"
 >
-  <motion.div
-    initial={{ rotateY: 0 }}
-    animate={{ rotateY: 360 }}
-    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-    className="perspective-1000"
-    style={{ perspective: "1000px" }}
-  >
-    <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/80 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 max-w-2xl mx-auto">
-      <div className="space-y-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400"
-        >
-          Built To Be Fast
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
-        >
-          Made To Be Trusted
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
-        >
-          Designed To Be Simplified
-        </motion.div>
-      </div>
-    </div>
-  </motion.div>
+  <div className="space-y-4">
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      transition={{ duration: 1.5, delay: 0.6 }}
+      className="h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mx-auto mb-4"
+    />
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
+      className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400"
+    >
+      <span className="inline-block">Built</span>
+      <span className="inline-block mx-2 text-white">To Be</span>
+      <span className="inline-block text-cyan-300">Fast.</span>
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 1.0 }}
+      className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
+    >
+      <span className="inline-block">Made</span>
+      <span className="inline-block mx-2 text-white">To Be</span>
+      <span className="inline-block text-blue-300">Trusted.</span>
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 1.2 }}
+      className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400"
+    >
+      <span className="inline-block">Designed</span>
+      <span className="inline-block mx-2 text-white">To Be</span>
+      <span className="inline-block text-purple-300">Simplified.</span>
+    </motion.div>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      transition={{ duration: 1.5, delay: 1.4 }}
+      className="h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mx-auto mt-4"
+    />
+  </div>
 </motion.div>
         </div>
       </div>
