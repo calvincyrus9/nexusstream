@@ -5,19 +5,19 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-
-  // Direct Google Drive link
-  const videoUrl ="https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
-
+  
+  // Direct Cloudinary link
+  const videoUrl = "https://res.cloudinary.com/dq3s29vn2/video/upload/v1724265300/4109220-uhd_4096_2160_25fps_y1hgxe.mp4";
+  
   useEffect(() => {
     // Check if video exists
     const video = document.createElement("video");
     video.src = videoUrl;
-
+    
     video.onloadeddata = () => {
       setVideoLoaded(true);
     };
-
+    
     video.onerror = () => {
       setVideoError(true);
       console.error("Video failed to load");
@@ -33,9 +33,19 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          preload="auto" // Added to ensure video loads properly
+          className="absolute top-0 left-0 w-full h-full object-cover z-0" // Changed from -z-10 to z-0
           onLoadedData={() => setVideoLoaded(true)}
           onError={() => setVideoError(true)}
+          style={{ 
+            // Added inline styles to ensure video covers entire section
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
         >
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
@@ -43,7 +53,7 @@ const HeroSection = () => {
       ) : (
         /* Fallback background image if video fails to load */
         <div
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+          className="absolute top-0 left-0 w-full h-full object-cover z-0" // Changed from -z-10 to z-0
           style={{
             backgroundImage: `url('/hero-bg-fallback.jpg')`,
             backgroundSize: "cover",
@@ -51,13 +61,13 @@ const HeroSection = () => {
           }}
         />
       )}
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 -z-10"></div>
-
+      
+      {/* Overlay - Changed z-index to be above video */}
+      <div className="absolute inset-0 bg-black/60 z-10"></div> {/* Changed from -z-10 to z-10 */}
+      
       {/* Content */}
       <motion.div
-        className="px-4 z-10"
+        className="px-4 z-20" // Changed from z-10 to z-20 to ensure it's above overlay
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -70,7 +80,7 @@ const HeroSection = () => {
         >
           Time To ...
         </motion.h3>
-
+        
         <motion.h1
           className="text-3xl md:text-5xl font-bold mb-6"
           initial={{ opacity: 0 }}
@@ -79,7 +89,7 @@ const HeroSection = () => {
         >
           Time To ... <span className="text-blue-400">NexusXtream</span>
         </motion.h1>
-
+        
         <motion.button
           className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition transform hover:scale-105 shadow-lg shadow-blue-500/30"
           whileHover={{ scale: 1.05 }}
@@ -91,17 +101,17 @@ const HeroSection = () => {
           Free Trial
         </motion.button>
       </motion.div>
-
+      
       {/* Loading indicator */}
       {!videoLoaded && !videoError && (
-        <div className="absolute inset-0 flex items-center justify-center -z-10">
+        <div className="absolute inset-0 flex items-center justify-center z-30"> {/* Changed from -z-10 to z-30 */}
           <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
       )}
-
+      
       {/* Video error message */}
       {videoError && (
-        <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400">
+        <div className="absolute bottom-4 left-0 right-0 text-center text-sm text-red-400 z-30"> {/* Changed from no z-index to z-30 */}
           Video failed to load. Using fallback background.
         </div>
       )}
