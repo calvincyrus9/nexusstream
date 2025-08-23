@@ -177,9 +177,12 @@ const Hero = () => {
               <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
           </motion.div>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-              The Numbers That Define Our Success.
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+    The Numbers That Define Our Success.
+  </span>
+</h1>
+
           {/* Stats with Icons */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
