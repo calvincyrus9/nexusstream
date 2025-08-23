@@ -132,11 +132,11 @@ const Hero = () => {
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-              Stream Anything,
+              From Zero to streaming in 60 Seconds
             </span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-              Anytime, Anywhere
+              in 60 Seconds
             </span>
           </motion.h1>
           
