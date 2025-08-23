@@ -1,17 +1,25 @@
 'use client';
+
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  PlayIcon,
+  UserGroupIcon,
+  StarIcon,
+  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
   ArrowPathIcon,
+  PlayIcon,
   DevicePhoneMobileIcon,
   ArrowsPointingOutIcon,
   ShieldCheckIcon
 } from "@heroicons/react/24/outline";
-
 const Hero = () => {
+  const [users, setUsers] = useState(0);
+  const [rating, setRating] = useState(0);
+  const [countries, setCountries] = useState(0);
+  const [support, setSupport] = useState(0);
+  const [activeFeature, setActiveFeature] = useState(0);
   const heroRef = useRef(null);
-  
   const features = [
     {
       title: "4K Ultra HD",
@@ -29,7 +37,29 @@ const Hero = () => {
       icon: ShieldCheckIcon
     }
   ];
-
+  useEffect(() => {
+    const animateValue = (setter, end, duration) => {
+      let start = 0;
+      const increment = end / (duration / 50);
+      const interval = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          start = end;
+          clearInterval(interval);
+        }
+        setter(Math.floor(start));
+      }, 50);
+    };
+    
+    animateValue(setUsers, 60000, 2000);
+    animateValue(setRating, 49, 2000);
+    animateValue(setCountries, 120, 2000);
+    animateValue(setSupport, 24, 2000);
+    const featureInterval = setInterval(() => {
+      setActiveFeature(prev => (prev + 1) % features.length);
+    }, 5000);
+    return () => clearInterval(featureInterval);
+  }, []);
   return (
     <section
       id="home"
@@ -44,7 +74,7 @@ const Hero = () => {
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0%M4 0h2v100H4%M8 0h2v100%H8%M12 0h2v100h-2%M16 0h2v100h-2%M20 0h2v100h-2%M24 0h2v100h-2%M28 0h2v100%H8%M32 0h2v100h-2%M36 0h2v100h-2%M40 0h2v100h-2%M44 0h2v100h-2%M48 0h2v100h-2%M52 0h2v100h-2%M56 0h2v100h-2%M60 0h2v100h-2%M64 0h2v100h-2%M68 0h2v100h-2%M72 0h2v100h-2%M76 0h2v100h-2%M80 0h2v100h-2%M84 0h2v100h-2%M88 0h2v100h-2%M92 0h2v100h-2%M96 0h2v100h-2%M0 0v2h100V0%M0 4v2h100V4%M0 8v2h100V8%M0 12v2h100v-2%M0 16v2h100v-2%M0 20v2h100v-2%M0 24v2h100v-2%M0 28v2h100v-2%M0 32v2h100v-2%M0 36v2h100v-2%M0 40v2h100v-2%M0 44v2h100v-2%M0 48v2h100v-2%M0 52v2h100v-2%M0 56v2h100v-2%M0 60v2h100v-2%M0 64v2h100v-2%M0 68v2h100v-2%M0 72v2h100v-2%M0 76v2h100v-2%M0 80v2h100v-2%M0 84v2h100v-2%M0 88v2h100v-2%M0 92v2h100v-2%M0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h2v100H0zM4 0h2v100H4zM8 0h2v100H8zM12 0h2v100h-2zM16 0h2v100h-2zM20 0h2v100h-2zM24 0h2v100h-2zM28 0h2v100H8zM32 0h2v100h-2zM36 0h2v100h-2zM40 0h2v100h-2zM44 0h2v100h-2zM48 0h2v100h-2zM52 0h2v100h-2zM56 0h2v100h-2zM60 0h2v100h-2zM64 0h2v100h-2zM68 0h2v100h-2zM72 0h2v100h-2zM76 0h2v100h-2zM80 0h2v100h-2zM84 0h2v100h-2zM88 0h2v100h-2zM92 0h2v100h-2zM96 0h2v100h-2zM0 0v2h100V0zM0 4v2h100V4zM0 8v2h100V8zM0 12v2h100v-2zM0 16v2h100v-2zM0 20v2h100v-2zM0 24v2h100v-2zM0 28v2h100v-2zM0 32v2h100v-2zM0 36v2h100v-2zM0 40v2h100v-2zM0 44v2h100v-2zM0 48v2h100v-2zM0 52v2h100v-2zM0 56v2h100v-2zM0 60v2h100v-2zM0 64v2h100v-2zM0 68v2h100v-2zM0 72v2h100v-2zM0 76v2h100v-2zM0 80v2h100v-2zM0 84v2h100v-2zM0 88v2h100v-2zM0 92v2h100v-2zM0 96v2h100v-2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E")`,
             backgroundSize: "100px 100px",
           }}
         ></div>
@@ -133,12 +163,12 @@ const Hero = () => {
               className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/40 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <PlayIcon className="w-5 h-5" /> Start Free Trial
+                < PlayIcon className="w-5 h-5" /> Start Free Trial
               </span>
               <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
             <a
-              href="/demo"
+              href="/renew"
               className="group relative bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-xl font-bold text-lg border border-gray-700 transition-all hover:border-cyan-500/30 hover:scale-105 flex items-center gap-2 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -148,21 +178,34 @@ const Hero = () => {
             </a>
           </motion.div>
           
-          {/* Tagline Section */}
+          {/* Stats with Icons */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400"
-            >
-              Ready to find what U need today?
-            </motion.div>
+            {[
+              { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
+              { value: `${(rating / 10).toFixed(1)}/5`, label: "Star Rating", icon: StarIcon },
+              { value: `${countries}+`, label: "Countries", icon: GlobeAltIcon },
+              { value: `${support}/7`, label: "Support", icon: ChatBubbleLeftRightIcon },
+            ].map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className="bg-gray-800/30 backdrop-blur-sm p-3 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all flex items-center gap-2"
+                >
+                  <Icon className="w-6 h-6 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <div className="text-2xl font-bold text-cyan-400">{stat.value}</div>
+                    <div className="text-xs text-gray-400">{stat.label}</div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
@@ -198,5 +241,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;
