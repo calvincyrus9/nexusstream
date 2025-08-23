@@ -195,7 +195,7 @@ const Hero = () => {
               { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
               { value: `${(rating / 10).toFixed(1)}/5`, label: "Loved by Streams Everywhere", icon: StarIcon },
               { value: `${countries}+`, label: "Countries Served", icon: GlobeAltIcon },
-              { value: `${support}/7`, label: "Support", icon: ChatBubbleLeftRightIcon },
+              { value: `${support}/7`, label: "Real Support for Real People", icon: ChatBubbleLeftRightIcon },
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (
