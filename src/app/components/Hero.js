@@ -177,7 +177,9 @@ const Hero = () => {
               <span className="absolute inset-0 bg-cyan-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-xl"></span>
             </a>
           </motion.div>
-          
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              The Numbers That Define Our Success
+            </span>
           {/* Stats with Icons */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -185,9 +187,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-              The Numbers That Define Our Success
-            </span>
+            
             {[
               { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
               { value: `${(rating / 10).toFixed(1)}/5`, label: "Loved by Streams Everywhere", icon: StarIcon },
