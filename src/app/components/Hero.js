@@ -51,8 +51,8 @@ const Hero = () => {
       }, 50);
     };
     
-    animateValue(setUsers, 25000, 2000);
-    animateValue(setRating, 45, 2000);
+    animateValue(setUsers, 20000, 2000);
+    animateValue(setRating, 46, 2000);
     animateValue(setCountries, 120, 2000);
     animateValue(setSupport, 24, 2000);
     const featureInterval = setInterval(() => {
