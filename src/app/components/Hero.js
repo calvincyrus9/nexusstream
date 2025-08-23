@@ -180,61 +180,36 @@ const Hero = () => {
           
           {/* Stats with Icons */}
           <motion.div 
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.5 }}
-  className="mt-16"
->
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.6 }}
-      className="text-center"
-    >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center">
-        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-        </svg>
-      </div>
-      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
-        Stream anything
-      </h3>
-    </motion.div>
-    
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.8 }}
-      className="text-center"
-    >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-        </svg>
-      </div>
-      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-        anytime
-      </h3>
-    </motion.div>
-    
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1.0 }}
-      className="text-center"
-    >
-      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-        </svg>
-      </div>
-      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-        anywhere
-      </h3>
-    </motion.div>
-  </div>
-</motion.div>
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              The Numbers That Define Our Success
+            </span>
+            {[
+              { value: `${users.toLocaleString()}+`, label: "Happy Users", icon: UserGroupIcon },
+              { value: `${(rating / 10).toFixed(1)}/5`, label: "Loved by Streams Everywhere", icon: StarIcon },
+              { value: `${countries}+`, label: "Countries Served", icon: GlobeAltIcon },
+              { value: `${support}/7`, label: "Support", icon: ChatBubbleLeftRightIcon },
+            ].map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                  className="bg-gray-800/30 backdrop-blur-sm p-3 rounded-xl border border-gray-700 hover:border-cyan-500/30 transition-all flex items-center gap-2"
+                >
+                  <Icon className="w-6 h-6 text-cyan-400 flex-shrink-0" />
+                  <div>
+                    <div className="text-2xl font-bold text-cyan-400">{stat.value}</div>
+                    <div className="text-xs text-gray-400">{stat.label}</div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
       

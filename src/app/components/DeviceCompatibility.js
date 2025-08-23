@@ -84,7 +84,7 @@ const DeviceCompatibility = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-500"
           >
-            Access our service on any device you choose. No restrictions, no limitations.
+            Watch Anytime, Anywhere
           </motion.h2>
           
           {/* Subtitle */}
@@ -95,7 +95,7 @@ const DeviceCompatibility = () => {
             viewport={{ once: true }}
             className="text-xl text-slate-300 max-w-2xl mx-auto"
           >
-           
+            Access our service on any device you choose. No restrictions, no limitations.
           </motion.p>
         </div>
         
