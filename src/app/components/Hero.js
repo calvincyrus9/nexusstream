@@ -178,7 +178,7 @@ const Hero = () => {
             </a>
           </motion.div>
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-              The Numbers That Define Our Success
+              The Numbers That Define Our Success.
             </span>
           {/* Stats with Icons */}
           <motion.div 
