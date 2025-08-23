@@ -229,9 +229,9 @@ const Testimonials = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           {[
-            { value: "98%", label: "Customer Satisfaction", icon: UserGroupIcon },
-            { value: "60K+", label: "Happy Users", icon: UserGroupIcon },
-            { value: "4.9/5", label: "Average Rating", icon: StarIcon },
+            { value: "95%", label: "Customer Satisfaction", icon: UserGroupIcon },
+            { value: "20K+", label: "Happy Users", icon: UserGroupIcon },
+            { value: "4.6 / 5", label: "Rated by 5,000+ Customers", icon: StarIcon },
             { value: "24/7", label: "Customer Support", icon: ChatBubbleLeftRightIcon }
           ].map((stat, index) => {
             const Icon = stat.icon;
